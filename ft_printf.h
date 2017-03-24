@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/03/24 06:31:26 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/03/24 11:02:43 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void				ft_display_arg_p(t_type *lst, va_list list);
 void				ft_display_arg_b(t_type *lst, va_list list);
 int					ft_real_size(t_type *lst, t_list *list);
 t_type				*ft_new_type(t_type *lst);
-// char				*ft_chartostr(int c);
 void				ft_itostr(int n);
 void				ft_itoustr(unsigned int n);
+void				ft_putstr_octal(long long n);
+void				*ft_memset_g(void *b, int c, size_t len);
+void				*ft_memcpy_g(void *dest, const void *src, size_t n);
 #endif

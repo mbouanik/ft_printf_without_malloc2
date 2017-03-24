@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/03/24 07:43:43 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/03/24 11:05:09 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_arg g_arg[] = {
 	{'u', &ft_display_arg_u},
 	{'c', &ft_display_arg_c},
 	{'D', &ft_display_arg_d},
-	{'U', &ft_display_arg_u}
-	// {'o', &ft_display_arg_o},
+	{'U', &ft_display_arg_u},
+	{'o', &ft_display_arg_o}
 	// {'x', &ft_display_arg_x},
 	// {'X', &ft_display_arg_xx},
 	// {'O', &ft_display_arg_octal},
@@ -55,7 +55,7 @@ int				ft_printf(char *format, ...)
 		if (*format == '%')
 		{
 			ft_assign_flags(format, &lst);
-			while (j++ < 7)
+			while (j++ < 8)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 			while (!(ft_isalpha(*format)))
@@ -70,6 +70,6 @@ int				ft_printf(char *format, ...)
 
 int				main(void)
 {
-	ft_printf("Hello %-10d this is %-10s from %-10u %c\n", 120, "Dante", 42, 'Z');
-	   printf("Hello %-10d this is %-10s from %-10u %c\n", 120, "Dante", 42, 'Z');
+	ft_printf("Hello %#o this is %-10.3s from %-10.15u %c\n", 120, "Dante", 42, 'Z');
+	   printf("Hello %#o this is %-10.3s from %-10.15u %c\n", 120, "Dante", 42, 'Z');
 }
