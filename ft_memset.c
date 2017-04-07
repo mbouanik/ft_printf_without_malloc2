@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itostr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/29 13:21:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/05 18:09:02 by mbouanik         ###   ########.fr       */
+/*   Created: 2016/11/05 11:44:04 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/04/07 04:39:09 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_assign_num(intmax_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (n > 0)
-		ft_assign_num(n / 10);
-	if (n > 0)
-		g_str[g_p++] = n % 10 + '0';
-}
+	char		*str;
 
-static void		ft_sign(intmax_t *n, int *s)
-{
-	if (*n < 0)
-	{
-		*s = 1;
-		*n *= -1;
-	}
-}
-
-void			ft_itostr(intmax_t n)
-{
-	int		neg;
-
-	if (n == 0)
-	{
-		g_str[g_p++] = n + 48;
-		return ;
-	}
-	neg = 0;
-	ft_sign(&n, &neg);
-	ft_assign_num(n);
+	str = (char*)b;
+	if (len)
+		while (len--)
+			*str++ = (unsigned char)c;
+	return (str);
 }

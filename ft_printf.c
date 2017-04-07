@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/03/24 11:05:09 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/07 22:48:29 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,62 +14,97 @@
 #include <stdio.h>
 
 t_arg g_arg[] = {
-	{'s', &ft_display_arg_s},
-	{'d', &ft_display_arg_d},
-	{'i', &ft_display_arg_d},
-	{'u', &ft_display_arg_u},
-	{'c', &ft_display_arg_c},
-	{'D', &ft_display_arg_d},
-	{'U', &ft_display_arg_u},
-	{'o', &ft_display_arg_o}
-	// {'x', &ft_display_arg_x},
-	// {'X', &ft_display_arg_xx},
-	// {'O', &ft_display_arg_octal},
-	// {'p', &ft_display_arg_p},
-	// {'b', &ft_display_arg_b}
+	{115, &ft_display_arg_s},
+	{99, &ft_display_arg_c},
+	{112, &ft_display_arg_p},
+	{98, &ft_display_arg_b},
+	{100, &ft_display_arg_d},
+	{105, &ft_display_arg_d},
+	{68, &ft_display_arg_d},
+	{120, &ft_display_arg_x},
+	{88, &ft_display_arg_xx},
+	{111, &ft_display_arg_o},
+	{79, &ft_display_arg_octal},
+	{117, &ft_display_arg_u},
+	{85, &ft_display_arg_uu},
+	{208, &ft_display_arg_d_intm},
+	{316, &ft_display_arg_d_intm},
+	{206, &ft_display_arg_d_intm},
+	{222, &ft_display_arg_d_intm},
+	{204, &ft_display_arg_d_short},
+	{308, &ft_display_arg_d_schar},
+	{213, &ft_display_arg_d_intm},
+	{321, &ft_display_arg_d_intm},
+	{211, &ft_display_arg_d_intm},
+	{227, &ft_display_arg_d_intm},
+	{209, &ft_display_arg_d_short},
+	{313, &ft_display_arg_d_schar},
+	{228, &ft_display_arg_x_uintm},
+	{336, &ft_display_arg_x_uintm},
+	{226, &ft_display_arg_x_uintm},
+	{242, &ft_display_arg_x_uintm},
+	{224, &ft_display_arg_x_us},
+	{328, &ft_display_arg_x_uchar},
+	{196, &ft_display_arg_xx_uintm},
+	{304, &ft_display_arg_xx_uintm},
+	{194, &ft_display_arg_xx_uintm},
+	{210, &ft_display_arg_xx_uintm},
+	{192, &ft_display_arg_xx_us},
+	{296, &ft_display_arg_xx_uchar},
+	{218, &ft_display_arg_o_uintm},
+	{327, &ft_display_arg_o_uintm},
+	{216, &ft_display_arg_o_uintm},
+	{233, &ft_display_arg_o_uintm},
+	{215, &ft_display_arg_o_us},
+	{319, &ft_display_arg_o_uchar},
+	{225, &ft_display_arg_u_uint},
+	{333, &ft_display_arg_u_uint},
+	{223, &ft_display_arg_u_uint},
+	{239, &ft_display_arg_u_uint},
+	{221, &ft_display_arg_u_us},
+	{325, &ft_display_arg_u_uchar}
 };
 
-t_type		*ft_new(t_type *lst)
+void			ft_new(t_type *lst)
 {
 	lst->flags = 0;
 	lst->mfw = 0;
 	lst->pmfw = 0;
-	lst->arg_type = 0;
-	lst->use = 0;
-	lst->next = NULL;
-	return (lst);
+	lst->mod = 0;
+	lst->deep = 0;
 }
 
 int				ft_printf(char *format, ...)
 {
 	va_list		list;
 	t_type		lst;
-	int			j;
+	short		j;
 
 	va_start(list, format);
+	g_size = 0;
 	g_p = 0;
+	ft_memset_g_set_zero(&g_str[0], 0, BUFF_SIZE);
 	while (*format)
 	{
+		ft_cp_until(g_str, &format, '%');
 		ft_new(&lst);
 		j = -1;
 		if (*format == '%')
 		{
-			ft_assign_flags(format, &lst);
-			while (j++ < 8)
-				if (lst.arg_type == g_arg[j].c)
+			ft_assign_flags(&format, &lst);
+			while (lst.mod != g_arg[j].c && j++ < 48)
+				if (lst.mod == g_arg[j].c)
 					g_arg[j].f(&lst, list);
-			while (!(ft_isalpha(*format)))
-				format += 1;
-			format += 1;
 		}
-		g_str[g_p++] = *format++;
 	}
 	ft_putstr(g_str);
-	return (g_p);
+	va_end(list);
+	return (g_size += g_p);
 }
 
-int				main(void)
-{
-	ft_printf("Hello %#o this is %-10.3s from %-10.15u %c\n", 120, "Dante", 42, 'Z');
-	   printf("Hello %#o this is %-10.3s from %-10.15u %c\n", 120, "Dante", 42, 'Z');
-}
+// int			main(void)
+// {
+// 	ft_printf("null %c and text\n", 0);
+// 	printf("null %c and text\n", 0);
+// 	 ft_printf("%5%\n");
+// }

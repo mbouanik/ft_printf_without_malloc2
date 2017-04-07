@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itostr.c                                        :+:      :+:    :+:   */
+/*   ft_count_until.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/29 13:21:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/05 18:09:02 by mbouanik         ###   ########.fr       */
+/*   Created: 2016/11/20 15:59:11 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/04/07 21:08:26 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_assign_num(intmax_t n)
+size_t		ft_count_until(const char *str, char c)
 {
-	if (n > 0)
-		ft_assign_num(n / 10);
-	if (n > 0)
-		g_str[g_p++] = n % 10 + '0';
+	int i;
+
+	i = 0;
+	while (str[g_i] != c && str[g_i] && i++ < BUFF_SIZE)
+		g_i++;
+	return (g_i);
 }
 
-static void		ft_sign(intmax_t *n, int *s)
+void		ft_cp_until(char *dest, char **src, char c)
 {
-	if (*n < 0)
-	{
-		*s = 1;
-		*n *= -1;
-	}
-}
-
-void			ft_itostr(intmax_t n)
-{
-	int		neg;
-
-	if (n == 0)
-	{
-		g_str[g_p++] = n + 48;
-		return ;
-	}
-	neg = 0;
-	ft_sign(&n, &neg);
-	ft_assign_num(n);
+	while (**src != c && **src && g_p < BUFF_SIZE)
+		dest[g_p++] = *(*src)++;
+	if (g_p >= BUFF_SIZE)
+		ft_size_s();
 }

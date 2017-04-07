@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itostr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/29 13:21:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/05 18:09:02 by mbouanik         ###   ########.fr       */
+/*   Created: 2016/11/11 20:22:49 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/03/27 09:36:34 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_assign_num(intmax_t n)
+int		ft_atoi(const char *str)
 {
-	if (n > 0)
-		ft_assign_num(n / 10);
-	if (n > 0)
-		g_str[g_p++] = n % 10 + '0';
-}
+	int i;
+	int nb;
+	int a;
 
-static void		ft_sign(intmax_t *n, int *s)
-{
-	if (*n < 0)
+	i = 0;
+	nb = 0;
+	a = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
+		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\f')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		*s = 1;
-		*n *= -1;
+		if (str[i] == '-')
+			a = -1;
+		i++;
 	}
-}
-
-void			ft_itostr(intmax_t n)
-{
-	int		neg;
-
-	if (n == 0)
+	while (str[i] >= '0' && str[i] <= '9' && str[i])
 	{
-		g_str[g_p++] = n + 48;
-		return ;
+		nb = (nb * 10) + (str[i] - 48);
+		i++;
 	}
-	neg = 0;
-	ft_sign(&n, &neg);
-	ft_assign_num(n);
+	return (a * nb);
 }
