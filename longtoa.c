@@ -1,27 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   longtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 01:09:19 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/08 01:33:58 by mbouanik         ###   ########.fr       */
+/*   Created: 2017/04/08 06:24:05 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/04/08 06:54:40 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_isdigit(int c)
+static void		ft_assign_num(long n)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	if (n > 0)
+		ft_assign_num(n / 10);
+	if (n > 0)
+		g_str[g_p++] = n % 10 + '0';
 }
 
-int		ft_isdigit_s(int c)
+static void		ft_sign(long *n, int *s)
 {
-	if (c >= '1' && c <= '9')
-		return (1);
-	return (0);
+	if (*n < 0)
+	{
+		*s = 1;
+		*n *= -1;
+	}
+}
+
+void			ft_longtoa(long n)
+{
+	int		neg;
+
+	if (n < -9223372036854775807)
+	{
+		ft_memcpy_g(g_str, "9223372036854775808", 19);
+		return ;
+	}
+	if (n == 0)
+	{
+		g_str[g_p++] = n + 48;
+		return ;
+	}
+	neg = 0;
+	ft_sign(&n, &neg);
+	ft_assign_num(n);
 }

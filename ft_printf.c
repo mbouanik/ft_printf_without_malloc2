@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/07 22:48:29 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/08 07:50:44 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_arg g_arg[] = {
 	{98, &ft_display_arg_b},
 	{100, &ft_display_arg_d},
 	{105, &ft_display_arg_d},
-	{68, &ft_display_arg_d},
+	{68, &ft_display_arg_dd},
 	{120, &ft_display_arg_x},
 	{88, &ft_display_arg_xx},
 	{111, &ft_display_arg_o},
@@ -62,6 +62,7 @@ t_arg g_arg[] = {
 	{223, &ft_display_arg_u_uint},
 	{239, &ft_display_arg_u_uint},
 	{221, &ft_display_arg_u_us},
+	{189, &ft_display_arg_u_us},
 	{325, &ft_display_arg_u_uchar}
 };
 
@@ -92,19 +93,12 @@ int				ft_printf(char *format, ...)
 		if (*format == '%')
 		{
 			ft_assign_flags(&format, &lst);
-			while (lst.mod != g_arg[j].c && j++ < 48)
+			while (lst.mod != g_arg[j].c && j++ < 49)
 				if (lst.mod == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
 	}
-	ft_putstr(g_str);
+	ft_putstr_g(g_str);
 	va_end(list);
 	return (g_size += g_p);
 }
-
-// int			main(void)
-// {
-// 	ft_printf("null %c and text\n", 0);
-// 	printf("null %c and text\n", 0);
-// 	 ft_printf("%5%\n");
-// }

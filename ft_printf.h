@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/07 18:22:42 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/08 07:06:38 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define PMFW lst->pmfw
 # define MFW lst->mfw
 # define MOD lst->mod
-# define BUFF_SIZE 64
+# define BUFF_SIZE 80
 # define BASE 0x0101010101010101
 
 char	g_str[BUFF_SIZE];
@@ -48,6 +48,7 @@ typedef struct		s_arg
 void				ft_assign_flags(char **f, t_type *lst);
 void				ft_display_arg_s(t_type *lst, va_list list);
 void				ft_display_arg_d(t_type *lst, va_list list);
+void				ft_display_arg_dd(t_type *lst, va_list list);
 void				ft_display_arg_u(t_type *lst, va_list list);
 void				ft_display_arg_uu(t_type *lst, va_list list);
 void				ft_display_arg_c(t_type *lst, va_list list);
@@ -75,7 +76,8 @@ void				ft_display_arg_xx_uchar(t_type *lst, va_list list);
 void				ft_display_arg_xx_uintm(t_type *lst, va_list list);
 void				ft_display_arg_xx_us(t_type *lst, va_list list);
 void				ft_display_arg_pur(t_type *lst);
-void				ft_itostr(intmax_t n);
+void				ft_itostr(int n);
+void				ft_longtoa(long n);
 void				ft_itoustr(unsigned long long n);
 void				ft_putstr_octal(long long n);
 void				ft_memset_g(void *b, int c, size_t len);
@@ -83,26 +85,25 @@ void				ft_memcpy_g(void *dest, const void *src, size_t n);
 void				ft_putstr_hexa(uintmax_t n);
 void				ft_putstr_x(uintmax_t n);
 void				ft_putstr_b(uintmax_t n);
-void				ft_flags_sign(t_type *lst, int n);
+void				ft_flags_sign(t_type *lst, long n);
 int					ft_isalpha(int c);
 int					ft_atoi(const char *str);
 size_t				ft_count_until(const char *str, char c);
 int					ft_isdigit(int c);
 int					ft_isupper(int c);
 int					ft_islower(int c);
-void				ft_putstr(char *str);
+void				ft_putstr_g(char *str);
 int					ft_strlen_b(long long n);
 int					ft_strlen_hexa(unsigned long long int n);
 size_t				ft_strlen_num(long long int n);
 size_t				ft_strlen(const char *s);
 void				*ft_memset(void *b, int c, size_t len);
-void				ft_putnbr(int n);
-void				ft_putchar(char c);
 int					ft_isprint(int c);
 void				ft_size(t_type *lst, int size);
 void				*ft_memset_g_set(void *b, int c, size_t len);
 void				*ft_memset_g_set_zero(void *b, int c, size_t len);
-void		ft_size_s(void);
-void		ft_cp_until(char *dest, char **src, char c);
+void				ft_size_s(void);
+void				ft_cp_until(char *dest, char **src, char c);
+int					ft_isdigit_s(int c);
 
 #endif

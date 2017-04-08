@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 15:48:36 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/04 07:04:07 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/08 06:09:04 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	ft_display_arg_xx_us_no_dash3(t_type *lst, unsigned short n, int size)
 
 void	ft_display_arg_xx_us(t_type *lst, va_list list)
 {
-	unsigned char	n;
+	unsigned short	n;
 	int				size;
 
-	n = (unsigned short)va_arg(list, int);
+	n = (unsigned short)va_arg(list, unsigned int);
 	size = ft_strlen_hexa(n);
 	ft_size(lst, size);
 	if (FLAGS & 1 && MFW >= 2)

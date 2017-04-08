@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 14:25:09 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/04 07:02:14 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/08 06:07:54 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_display_arg_o_us(t_type *lst, va_list list)
 	unsigned short		n;
 	int					size;
 
-	n = (unsigned short)va_arg(list, int);
+	n = (unsigned short)va_arg(list, unsigned int);
 	size = ft_strlen_num(n);
 	ft_size(lst, size);
 	if (FLAGS & 2)

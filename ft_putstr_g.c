@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 01:09:19 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/08 01:33:58 by mbouanik         ###   ########.fr       */
+/*   Created: 2016/11/17 16:46:31 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/04/07 23:05:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_isdigit(int c)
+void	ft_putstr_g(char *str)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int		ft_isdigit_s(int c)
-{
-	if (c >= '1' && c <= '9')
-		return (1);
-	return (0);
+	if (str != NULL)
+		write(1, str, g_p);
 }
