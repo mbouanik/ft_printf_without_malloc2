@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 14:38:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/03/27 09:35:50 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/11 03:16:35 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ size_t	ft_strlen(const char *s)
 	int i;
 
 	i = 0;
-	while (s[i])
-		i++;
+	if (s != NULL)
+		while (s[i])
+			i++;
 	return (i);
 }

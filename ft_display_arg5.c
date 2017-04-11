@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 09:44:19 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/08 07:47:28 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/11 02:54:08 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,19 @@ void		ft_display_arg_x_no_dash(t_type *lst, unsigned int n, int size)
 {
 	if (MFW > PMFW)
 	{
-		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 		if (FLAGS & 4)
 		{
 			if (FLAGS & 1)
 				ft_memcpy_g(g_str, "0x", 2);
 			ft_memset_g_set(g_str, '0', PMFW - size);
 		}
-		if (FLAGS & 1 && n)
-			ft_memcpy_g(g_str, "0x", 2);
+		else
+		{
+			if (FLAGS & 1 && n)
+				ft_memcpy_g(g_str, "0x", 2);
+			ft_memset_g_set(g_str, ' ', MFW - PMFW);
+			ft_memset_g_set(g_str, '0', PMFW - size);
+		}
 	}
 	else
 		ft_display_arg_x_no_dash2(lst, n, size);

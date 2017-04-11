@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/08 07:06:38 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/11 02:35:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ void				ft_display_arg_xx_us(t_type *lst, va_list list);
 void				ft_display_arg_pur(t_type *lst);
 void				ft_itostr(int n);
 void				ft_longtoa(long n);
-void				ft_itoustr(unsigned long long n);
-void				ft_putstr_octal(long long n);
+void				ft_itoustr(unsigned long n);
+void				ft_putstr_octal(unsigned int n);
+void				ft_putstr_lo(uint64_t n);
 void				ft_memset_g(void *b, int c, size_t len);
 void				ft_memcpy_g(void *dest, const void *src, size_t n);
 void				ft_putstr_hexa(uintmax_t n);
@@ -88,7 +89,6 @@ void				ft_putstr_b(uintmax_t n);
 void				ft_flags_sign(t_type *lst, long n);
 int					ft_isalpha(int c);
 int					ft_atoi(const char *str);
-size_t				ft_count_until(const char *str, char c);
 int					ft_isdigit(int c);
 int					ft_isupper(int c);
 int					ft_islower(int c);
@@ -105,5 +105,6 @@ void				*ft_memset_g_set_zero(void *b, int c, size_t len);
 void				ft_size_s(void);
 void				ft_cp_until(char *dest, char **src, char c);
 int					ft_isdigit_s(int c);
+size_t		ft_strlen_o(long long int n);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/04/08 06:27:57 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/04/11 01:04:34 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,14 @@ SRC = 	ft_printf.c\
 		ft_atoi.c\
 		longtoa.c\
 		ft_putstr_octal.c\
+		ft_putstr_lo.c\
 		ft_putstr_hexa.c\
 		ft_putstr_x.c\
 		ft_putstr_b.c\
 		ft_itostr.c\
 		ft_itoustr.c\
 		ft_flags_sign.c\
-		ft_count_until.c\
+		ft_cp_until.c\
 		ft_isdigit.c\
 		ft_putstr_g.c\
 		ft_strlen.c\
