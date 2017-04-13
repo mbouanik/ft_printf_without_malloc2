@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 15:42:22 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/11 05:23:09 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/13 07:46:23 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,23 @@ void	ft_display_arg_xx_uchar_no_dash3(t_type *lst, unsigned char n, int size)
 void	ft_display_arg_xx_uchar(t_type *lst, va_list list)
 {
 	unsigned char	n;
-	int				size;
 
 	n = (unsigned char)va_arg(list, unsigned int);
-	size = ft_strlen_hexa((unsigned char)n);
-	ft_size(lst, size);
+	SIZE = ft_strlen_hexa((unsigned char)n);
+	ft_size(lst, SIZE);
 	if (FLAGS & 1 && MFW >= 2)
 		MFW -= 2;
 	if (FLAGS & 2)
-		ft_display_arg_xx_uchar_dash(lst, n, size);
+		ft_display_arg_xx_uchar_dash(lst, n, SIZE);
 	else
 	{
-		if (MFW > size && PMFW > size)
-			ft_display_arg_xx_uchar_no_dash(lst, n, size);
-		else if (((MFW < size || MFW == 0) && PMFW > size))
-			ft_display_arg_xx_uchar_no_dash2(lst, n, size);
-		else if (MFW > size && (PMFW < size || PMFW == 0))
-			ft_display_arg_xx_uchar_no_dash3(lst, n, size);
-		else if ((MFW < size || MFW == 0) && (PMFW < size || PMFW == 0))
+		if (MFW > SIZE && PMFW > SIZE)
+			ft_display_arg_xx_uchar_no_dash(lst, n, SIZE);
+		else if (((MFW <= SIZE || MFW == 0) && PMFW >= SIZE))
+			ft_display_arg_xx_uchar_no_dash2(lst, n, SIZE);
+		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
+			ft_display_arg_xx_uchar_no_dash3(lst, n, SIZE);
+		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 			if (FLAGS & 1 && n)
 				ft_memcpy_g(g_str, "0x", 2);
 		ft_putstr_x(n);

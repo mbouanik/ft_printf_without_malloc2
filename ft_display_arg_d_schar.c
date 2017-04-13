@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 13:33:09 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/11 05:21:34 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/13 07:51:27 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,21 @@ void	ft_display_arg_d_schar_no_dash3(t_type *lst, signed char n, int size)
 void	ft_display_arg_d_schar(t_type *lst, va_list list)
 {
 	signed char n;
-	int			size;
 
 	n = (signed char)va_arg(list, signed int);
-	size = ft_strlen_num(n);
-	ft_size(lst, size);
+	SIZE = ft_strlen_num(n);
+	ft_size(lst, SIZE);
 	if (FLAGS & 2)
-		ft_display_arg_d_schar_dash(lst, n, size);
+		ft_display_arg_d_schar_dash(lst, n, SIZE);
 	else
 	{
-		if (MFW > size && PMFW > size)
-			ft_display_arg_d_schar_no_dash(lst, n, size);
-		else if ((MFW < size || MFW == 0) && PMFW > size)
-			ft_display_arg_d_schar_no_dash2(lst, n, size);
-		else if (MFW > size && (PMFW < size || PMFW == 0))
-			ft_display_arg_d_schar_no_dash3(lst, n, size);
-		else if ((MFW < size || MFW == 0) && (PMFW < size || PMFW == 0))
+		if (MFW > SIZE && PMFW > SIZE)
+			ft_display_arg_d_schar_no_dash(lst, n, SIZE);
+		else if ((MFW <= SIZE || MFW == 0) && PMFW >= SIZE)
+			ft_display_arg_d_schar_no_dash2(lst, n, SIZE);
+		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
+			ft_display_arg_d_schar_no_dash3(lst, n, SIZE);
+		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 		{
 			if ((FLAGS & 16 || FLAGS & 8) || n < 0)
 				ft_flags_sign(lst, n);

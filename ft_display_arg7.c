@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:21:46 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/07 23:11:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/13 07:33:29 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void		ft_display_arg_b_dash(t_type *lst, long long n, int size)
 {
-	if (PMFW > 0 && PMFW >= size)
+	if (PMFW > size && PMFW >= size)
 		ft_memset_g_set(g_str, '0', PMFW - size);
 	ft_putstr_b(n);
-	if (MFW > 0 && PMFW > size)
+	if (MFW > size && PMFW > size)
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	else
 		ft_memset_g_set(g_str, ' ', MFW - size);
@@ -43,9 +43,9 @@ void		ft_display_arg_b(t_type *lst, va_list list)
 				ft_memset_g_set(g_str, ' ', MFW - size);
 			ft_memset_g_set(g_str, '0', PMFW - size);
 		}
-		else if ((MFW < size || MFW == 0) && PMFW > size)
+		else if ((MFW <= size || MFW == 0) && PMFW >= size)
 			ft_memset_g_set(g_str, '0', PMFW - size);
-		else if (MFW > size && (PMFW == 0 || MFW < size))
+		else if (MFW >= size && (PMFW == 0 || MFW <= size))
 			ft_memset_g_set(g_str, ' ', MFW - size);
 		ft_putstr_b(n);
 	}

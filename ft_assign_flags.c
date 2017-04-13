@@ -6,75 +6,60 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 02:32:42 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/11 05:59:07 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/13 02:12:45 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+t_flag g_flag[] = {
+	{'#', &ft_hash},
+	{'-', &ft_minus},
+	{'0', &ft_zero},
+	{' ', &ft_blank},
+	{'+', &ft_plus}
+};
+
 static void		ft_flags(char **f, t_type *lst)
 {
+	int i;
+
 	while (!(ft_isalpha(**f)) && !(ft_isdigit_s(**f)) && **f != '%'
 			&& **f != '.' && **f)
 	{
-		if (**f == '#')
-			FLAGS |= 1;
-		else if (**f == '-')
-			FLAGS |= 2;
-		else if (**f == '0')
-			FLAGS |= 4;
-		else if (**f == ' ')
-			FLAGS |= 8;
-		else if (**f == '+')
-			FLAGS |= 16;
+		i = -1;
+		while (**f != g_flag[i].c && i++ <= 4)
+			if (**f == g_flag[i].c)
+				g_flag[i].f(lst);
 		*f += 1;
 	}
 }
 
 static void		ft_arg_type(t_type *lst, char **str)
 {
-	// int a;
-
-	// a = 0;
-	// if (**str == 'j' || **str == 'z')
-	// 	a = 1;
 	MOD |= *(*str)++;
-	if ((**str == 'h' || **str == 'l'))// && a == 0)
+	if ((**str == 'h' || **str == 'l'))
 		MOD += *(*str)++;
-	// else
-	// 	*str += 1;
-	// if (MOD == 104 || MOD == 208 || MOD == 108 || MOD == 216
-	// 	|| MOD == 106 || MOD == 122)
-		if (ft_isalpha(**str))
-		 	MOD += *(*str)++;
+	ft_flags(str, lst);
+	if (ft_isalpha(**str))
+		lst->arg_type = *(*str)++;
 }
 
 void			ft_assign_flags(char **f, t_type *lst)
 {
-	*f += 1;
-	if (**f == '\0')
-		return ;
 	ft_flags(f, lst);
 	while (!(ft_isalpha(**f)) && **f != '%' && **f)
 	{
-		if (ft_isdigit_s(**f) && lst->deep == 0 && (lst->deep += 1))
-			lst->mfw = ft_atoi(*f);
-		else if (**f == '.' && (lst->deep = 1))
-		{
-			if (ft_isdigit_s(*(*f + 1)))
-				PMFW = ft_atoi(*f += 1);
-			else
-				PMFW = -1;
-		}
+		if (ft_isdigit_s(**f))
+			MFW = ft_atoi(f);
+		else if (**f == '.' && (*f += 1))
+			PMFW = ft_atoi(f);
 		*f += 1;
 	}
 	if (**f == '%' && ++(*f))
 		ft_display_arg_pur(lst);
 	else if (**f == 'h' || **f == 'l' || **f == 'j' || **f == 'z')
 		ft_arg_type(lst, f);
-	// else
-	// {
-		if (ft_isalpha(**f))
-			MOD += *(*f)++;
-	// }
+	if (ft_isalpha(**f))
+		lst->arg_type = *(*f)++;
 }

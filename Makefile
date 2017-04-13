@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/04/11 01:04:34 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/04/13 07:08:26 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = 	ft_printf.c\
 		ft_display_arg_uu.c\
 		ft_display_arg_dd.c\
 		ft_atoi.c\
-		longtoa.c\
+		ft_longtoa.c\
 		ft_putstr_octal.c\
 		ft_putstr_lo.c\
 		ft_putstr_hexa.c\
@@ -50,7 +50,7 @@ SRC = 	ft_printf.c\
 		ft_display_arg_d_schar.c\
 		ft_display_arg_d_intm.c\
 		ft_display_arg_u_us.c\
-		ft_display_arg_u_uint.c\
+		ft_display_arg_u_uintm.c\
 		ft_display_arg_u_uchar.c\
 		ft_display_arg_o_us.c\
 		ft_display_arg_o_uchar.c\
@@ -61,9 +61,19 @@ SRC = 	ft_printf.c\
 		ft_display_arg_xx_us.c\
 		ft_display_arg_xx_uchar.c\
 		ft_display_arg_xx_uintm.c\
+		ft_display_arg_d_mod.c\
+		ft_display_arg_o_mod.c\
+		ft_display_arg_x_mod.c\
+		ft_display_arg_xx_mod.c\
+		ft_display_arg_u_mod.c\
 		ft_memset.c\
 		ft_isprint.c\
-		ft_size.c
+		ft_size.c\
+		ft_zero.c\
+		ft_hash.c\
+		ft_blank.c\
+		ft_plus.c\
+		ft_minus.c
 
 OBJ = $(SRC:.c=.o)
 
