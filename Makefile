@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/04/13 07:08:26 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/04/14 05:40:54 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = 	ft_printf.c\
 		ft_display_arg8.c\
 		ft_display_arg_uu.c\
 		ft_display_arg_dd.c\
-		ft_atoi.c\
+		ft_atoi_s.c\
 		ft_longtoa.c\
 		ft_putstr_octal.c\
 		ft_putstr_lo.c\
@@ -73,7 +73,8 @@ SRC = 	ft_printf.c\
 		ft_hash.c\
 		ft_blank.c\
 		ft_plus.c\
-		ft_minus.c
+		ft_minus.c\
+		ft_displays_arg_str_uin.c
 
 OBJ = $(SRC:.c=.o)
 

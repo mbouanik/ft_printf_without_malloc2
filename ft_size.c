@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 06:52:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/13 05:40:28 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/16 00:29:06 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		ft_check_size(t_type *lst, int n)
 {
 	if ((SIZE = ft_strlen_num(n)) && PMFW == -1 && n == 0)
 		SIZE = 0;
+	ft_size(lst, SIZE);
 }
 
 void		ft_check_size_o(t_type *lst, long int n)
@@ -45,9 +46,9 @@ void		ft_check_size_o(t_type *lst, long int n)
 	ft_size(lst, SIZE);
 }
 
-void		ft_check_size_hexa(t_type *lst, unsigned int n)
+void		ft_check_size_hexa(t_type *lst, uint64_t n)
 {
-	if ((SIZE = ft_strlen_hexa(n)) && PMFW == -1 && n == 0)
+	if ((SIZE = ft_strlen_hexa(n)) && PMFW == -1 && n == 0 && !(FLAGS & 1))
 		SIZE = 0;
 	ft_size(lst, SIZE);
 }

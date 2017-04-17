@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 11:20:30 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/13 07:31:38 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/15 03:17:40 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,6 @@ void		ft_display_arg_octal(t_type *lst, va_list list)
 {
 	long int		n;
 
-	if (MOD)
-	{
-		ft_display_arg_o_mod(lst, list);
-		return ;
-	}
 	n = va_arg(list, long int);
 	ft_check_size_o(lst, n);
 	if (FLAGS & 2)

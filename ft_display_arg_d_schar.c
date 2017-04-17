@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 13:33:09 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/13 07:51:27 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/16 01:55:46 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 void	ft_display_arg_d_schar_dash(t_type *lst, signed char n, int size)
 {
-	if ((FLAGS & 16 || FLAGS & 20) && n > 0)
-		ft_memset_g_set(g_str, '+', 1);
+	ft_flags_sign(lst, n);
 	if (MFW > size && PMFW > size && PMFW < MFW)
 	{
 		ft_memset_g_set(g_str, '0', PMFW - size);
 		ft_itostr(n);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
-	else if ((MFW < size && PMFW > size) || PMFW > MFW || PMFW == MFW)
+	else if (MFW < size && PMFW > size && PMFW >= MFW)
 	{
 		ft_memset_g_set(g_str, '0', PMFW - size);
 		ft_itostr(n);
 	}
 	else if (MFW > size && PMFW < size)
 	{
-		if (FLAGS & 16)
-			MFW--;
-		ft_itostr(n);
+		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+			ft_itostr(n);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 	}
-	else
-		ft_itostr(n);
+	else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
+		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+			ft_itostr(n);
 }
 
 void	ft_display_arg_d_schar_no_dash2(t_type *lst, signed char n, int size)
@@ -76,15 +75,7 @@ void	ft_display_arg_d_schar_no_dash3(t_type *lst, signed char n, int size)
 {
 	if (FLAGS & 4)
 	{
-		if (n < 0 || FLAGS & 16 || FLAGS & 8)
-		{
-			if (FLAGS & 16 && n < 0 && size++)
-				ft_memset_g_set(g_str, '+', 1);
-			else if (FLAGS & 8 && n > 0 && size++)
-				ft_memset_g_set(g_str, ' ', 1);
-			else
-				ft_memset_g_set(g_str, '-', 1);
-		}
+		ft_flags_sign(lst, n);
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
 	else
@@ -117,9 +108,9 @@ void	ft_display_arg_d_schar(t_type *lst, va_list list)
 			ft_display_arg_d_schar_no_dash3(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 		{
-			if ((FLAGS & 16 || FLAGS & 8) || n < 0)
-				ft_flags_sign(lst, n);
-			ft_itostr(n);
+			ft_flags_sign(lst, n);
+			if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+				ft_itostr(n);
 		}
 	}
 }

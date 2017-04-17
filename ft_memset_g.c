@@ -6,20 +6,20 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 09:12:33 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/07 17:28:31 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/14 04:44:53 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_memset_g(void *b, int c, size_t len)
+void	ft_memset_g(void *b, wchar_t c, size_t len)
 {
 	char		*str;
 
 	str = (char *)b;
 	if (len)
 		while (len--)
-			str[g_p++] = (unsigned char)c;
+			str[g_p++] = (wchar_t)c;
 }
 
 void	ft_memcpy_g(void *dest, const void *src, size_t n)

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:52:42 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/11 21:33:37 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/15 02:13:36 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		ft_display_arg_o_mod(t_type *lst, va_list list)
 	int j;
 
 	j = -1;
-	while (lst->mod != g_arg_o[j].c && j++ < 6)
+	while (++j < 6)
 		if (lst->mod == g_arg_o[j].c)
 			g_arg_o[j].f(lst, list);
 }

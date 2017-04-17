@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 06:16:13 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/13 07:52:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/16 01:22:18 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,25 @@ void		ft_display_arg_dd_dash(t_type *lst, long n, int size)
 	if (MFW > size && PMFW > size && PMFW < MFW)
 	{
 		ft_memset_g_set(g_str, '0', PMFW - size);
-		ft_longtoa(n);
+		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+			ft_longtoa(n);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
-	else if ((MFW < size && PMFW > size) || PMFW > MFW || PMFW == MFW)
+	else if (MFW < size && PMFW > size && PMFW >= MFW)
 	{
 		ft_memset_g_set(g_str, '0', PMFW - size);
-		ft_longtoa(n);
+		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+			ft_longtoa(n);
 	}
 	else if (MFW > size && PMFW < size)
 	{
-		if (FLAGS & 16)
-			MFW--;
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_longtoa(n);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 	}
-	else
-	{
+	else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_longtoa(n);
-	}
 }
 
 void		ft_display_arg_dd_no_dash2(t_type *lst, long n, int size)
@@ -53,7 +51,6 @@ void		ft_display_arg_dd_no_dash2(t_type *lst, long n, int size)
 			ft_memset_g_set(g_str, ' ', 1);
 	}
 	ft_memset_g_set(g_str, '0', PMFW - size);
-	ft_longtoa(n);
 }
 
 void		ft_display_arg_dd_no_dash(t_type *lst, long n, int size)
@@ -71,7 +68,6 @@ void		ft_display_arg_dd_no_dash(t_type *lst, long n, int size)
 				ft_memset_g_set(g_str, '-', 1);
 		}
 		ft_memset_g_set(g_str, '0', PMFW - size);
-		ft_longtoa(n);
 	}
 	else if (PMFW >= MFW)
 		ft_display_arg_dd_no_dash2(lst, n, size);
@@ -102,7 +98,6 @@ void		ft_display_arg_dd_no_dash3(t_type *lst, long n, int size)
 	}
 	if (PMFW == -1 && !(n))
 		return ;
-	ft_longtoa(n);
 }
 
 void		ft_display_arg_dd(t_type *lst, va_list list)
@@ -124,11 +119,9 @@ void		ft_display_arg_dd(t_type *lst, va_list list)
 		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
 			ft_display_arg_dd_no_dash3(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
-		{
 			if ((FLAGS & 16 || FLAGS & 8) || n < 0)
 				ft_flags_sign(lst, n);
-			if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
+		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 				ft_longtoa(n);
-		}
 	}
 }
