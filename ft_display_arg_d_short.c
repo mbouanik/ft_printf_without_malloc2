@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 13:18:08 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 01:53:16 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 09:44:40 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		ft_display_arg_d_short_no_dash(t_type *lst, short n, int size)
 	}
 	else if (PMFW >= MFW)
 		ft_display_arg_d_short_no_dash2(lst, n, size);
-
 }
 
 void		ft_display_arg_d_short_no_dash3(t_type *lst, short n, int size)

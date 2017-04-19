@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 06:16:13 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 01:22:18 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 09:45:48 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,6 @@ void		ft_display_arg_dd(t_type *lst, va_list list)
 			if ((FLAGS & 16 || FLAGS & 8) || n < 0)
 				ft_flags_sign(lst, n);
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
-				ft_longtoa(n);
+			ft_longtoa(n);
 	}
 }

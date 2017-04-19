@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 14:20:51 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 02:28:32 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 09:45:27 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_display_arg_o_uchar(t_type *lst, va_list list)
 		if (MFW > SIZE && PMFW > SIZE)
 			ft_display_arg_o_uchar_no_dash(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && PMFW >= SIZE)
-			ft_display_arg_o_uchar_no_dash2(lst, n,SIZE);
+			ft_display_arg_o_uchar_no_dash2(lst, n, SIZE);
 		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
 			ft_display_arg_o_uchar_no_dash3(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))

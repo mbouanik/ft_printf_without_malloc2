@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 03:57:16 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:07:53 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_arg g_arg[] = {
 	{'s', &ft_display_arg_s},
+	{'S', &ft_display_arg_str_uni},
 	{'c', &ft_display_arg_c},
 	{'C', &ft_display_arg_c_uni},
 	{'p', &ft_display_arg_p},

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 18:02:19 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 14:48:46 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # define SIZE lst->size
 # define BUFF_SIZE 64
 # define BASE 0x0101010101010101
+# define LOCALE setlocale(LC_ALL, "");
 
 char	g_str[BUFF_SIZE];
 short	g_p;
 int		g_size;
-int		g_i;
 
 typedef struct		s_type
 {
@@ -43,6 +43,8 @@ typedef struct		s_type
 
 typedef void		(*t_func_arg)(t_type *, va_list);
 typedef void		(*t_func_flag)(t_type *);
+typedef void		(*t_func_c_uni)(wchar_t, t_type *);
+typedef void		(*t_func_str_uni)(wchar_t);
 
 typedef struct		s_arg
 {
@@ -55,6 +57,18 @@ typedef struct		s_flag
 	short			c;
 	t_func_flag		f;
 }					t_flag;
+
+typedef struct		s_arg_uni
+{
+	short			c;
+	t_func_c_uni	f;
+}					t_arg_uni;
+
+typedef struct		s_arg_str_uni
+{
+	short			c;
+	t_func_str_uni	f;
+}					t_arg_str_uni;
 
 int					ft_printf(char *format, ...);
 void				ft_assign_flags(char **f, t_type *lst, va_list list);
@@ -133,5 +147,16 @@ void				ft_check_size_o(t_type *lst, long int n);
 void				ft_check_size_hexa(t_type *lst, uint64_t n);
 void				ft_display_arg_c_uni(t_type *lst, va_list list);
 void				ft_display_no_arg(t_type *lst);
+void				ft_display_arg_c_uni_16(wchar_t s, t_type *lst);
+void				ft_display_arg_c_uni_11(wchar_t s, t_type *lst);
+void				ft_display_arg_c_uni_21(wchar_t s, t_type *lst);
+void				ft_display_arg_c_uni_7(wchar_t s, t_type *lst);
+void		ft_display_arg_str_uni(t_type *lst, va_list list);
+void		ft_display_arg_c_uni_7_arg(wchar_t s);
+void		ft_display_arg_c_uni_11_arg(wchar_t s);
+void		ft_display_arg_c_uni_16_arg(wchar_t s);
+void		ft_display_arg_c_uni_21_arg(wchar_t s);
+void		ft_putstr_uni(wchar_t *s);
+size_t	ft_strlen_uni(wchar_t *s);
 
 #endif

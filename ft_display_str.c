@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 20:44:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/15 03:02:26 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:10:29 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void		ft_display_arg_s(t_type *lst, va_list list)
 	char	*s;
 	int		size;
 
+	if (MOD == 'l')
+	{
+		ft_display_arg_str_uni(lst, list);
+		return ;
+	}
 	s = va_arg(list, char *);
 	if (s == NULL && PMFW != -1)
 	{
@@ -54,6 +59,11 @@ void		ft_display_arg_c(t_type *lst, va_list list)
 {
 	int		s;
 
+	if (MOD)
+	{
+		ft_display_arg_c_uni(lst, list);
+		return ;
+	}
 	s = va_arg(list, int);
 	ft_size(lst, 1);
 	if (FLAGS & 2)
