@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/19 16:07:53 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/20 17:23:54 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int				ft_printf(char *format, ...)
 	va_start(list, format);
 	g_size = 0;
 	g_p = 0;
-	ft_memset_g_set_zero(g_str, 0, BUFF_SIZE);
 	while (*format)
 	{
 		ft_new(&lst);
@@ -57,11 +56,11 @@ int				ft_printf(char *format, ...)
 		if ((j = -1) && *format == '%' && (format++) && *format)
 		{
 			ft_assign_flags(&format, &lst, list);
-			while (lst.arg_type != g_arg[j].c && j++ < 14)
+			while (lst.arg_type != g_arg[j].c && j++ < 15)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
-		if (lst.arg_type && j == 15 && lst.arg_type != '%')
+		if (lst.arg_type && j == 16)
 			ft_display_no_arg(&lst);
 	}
 	ft_putstr_g(g_str);

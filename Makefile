@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/04/19 10:13:49 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/04/19 18:11:40 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ SRC = 	ft_printf.c\
 		ft_blank.c\
 		ft_plus.c\
 		ft_minus.c\
-		ft_displays_arg_str_uin.c\
+		ft_display_arg_uni.c\
 		ft_display_arg_c_uni7.c\
 		ft_display_arg_c_uni11.c\
 		ft_display_arg_c_uni16.c\
