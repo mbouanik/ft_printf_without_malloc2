@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 20:44:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/20 16:07:13 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 15:37:21 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,10 @@ void		ft_display_arg_s(t_type *lst, va_list list)
 	s = va_arg(list, char *);
 	if (s == NULL && PMFW != -1)
 	{
-		ft_memcpy_g(g_str, "(null)", 6);
+		ft_str_null(lst);
 		return ;
 	}
-	if ((SIZE = ft_strlen(s)) && SIZE > PMFW && PMFW > 0)
-		SIZE = PMFW;
-	if (PMFW == -1)
-		SIZE = 0;
-	ft_size(lst, SIZE);
+	ft_check_size_str(lst, s);
 	if (FLAGS & 2)
 	{
 		if (PMFW != -1)

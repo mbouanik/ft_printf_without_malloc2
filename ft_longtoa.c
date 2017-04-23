@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 06:24:05 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/13 07:15:00 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/22 20:33:43 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		ft_assign_num(long n)
 	if (n > 0)
 		ft_assign_num(n / 10);
 	if (n > 0)
-		g_str[g_p++] = n % 10 + '0';
+		g_str[g_p++] = n % 10 + 48;
 }
 
 static void		ft_sign(long *n, int *s)

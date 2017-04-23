@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 02:32:42 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/20 20:18:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/21 15:43:58 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ t_flag g_flag[] = {
 	{'0', &ft_zero},
 	{' ', &ft_blank},
 	{'+', &ft_plus}
-	{'1', &ft_mfw},
-	{'2', &ft_mfw},
-	{'3', &ft_mfw},
-	{'4', &ft_mfw},
-	{'5', &ft_mfw},
-	{'6', &ft_mfw},
-	{'7', &ft_mfw},
-	{'8', &ft_mfw},
-	{'9', &ft_mfw},
-	{'*', &ft_mfw},
-	{'.', &ft_pmfw}
 };
 
 static void		ft_flags(char **f, t_type *lst)
@@ -45,19 +34,6 @@ static void		ft_flags(char **f, t_type *lst)
 					g_flag[i].f(lst);
 			*f += 1;
 		}
-}
-
-static void		ft_flags_2(char **f, t_type *lst)
-{
-	int i;
-
-	if (**f == '#' || **f == '-' || **f == '0' || **f == ' ' || **f == '+')
-	{
-		i = -1;
-		while (++i <= 4)
-			if (**f == g_flag[i].c)
-				g_flag[i].f(lst);
-	}
 }
 
 static void		ft_arg_type(t_type *lst, char **f)
@@ -93,7 +69,6 @@ void			ft_assign_flags(char **f, t_type *lst, va_list list)
 				if (PMFW == 0)
 					PMFW = -1;
 			}
-			ft_flags_2(f, lst);
 			*f += 1;
 		}
 	if (**f == 'h' || **f == 'l' || **f == 'j' || **f == 'z')

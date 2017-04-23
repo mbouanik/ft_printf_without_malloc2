@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 11:20:30 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/15 03:17:40 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 01:51:29 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void		ft_display_arg_octal_no_dash(t_type *lst, int size)
 
 void		ft_display_arg_octal_no_dash3(t_type *lst, long int n, int size)
 {
-	ft_memset_g_set(g_str, ' ', MFW - size);
+	if (FLAGS & 4 && PMFW != -1)
+		ft_memset_g_set(g_str, '0', MFW - size);
+	else
+		ft_memset_g_set(g_str, ' ', MFW - size);
 	if (FLAGS & 1 && n && g_p--)
 		ft_memset_g_set(g_str, '0', 1);
 }
@@ -77,9 +80,9 @@ void		ft_display_arg_octal(t_type *lst, va_list list)
 			ft_display_arg_octal_no_dash(lst, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && PMFW >= SIZE)
 			ft_display_arg_octal_no_dash2(lst, SIZE);
-		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
+		else if (MFW > SIZE && (PMFW <= SIZE || PMFW == 0))
 			ft_display_arg_octal_no_dash3(lst, n, SIZE);
-		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
+		else if ((MFW < SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 			if (FLAGS & 1 && n)
 				ft_memset_g_set(g_str, '0', 1);
 		if ((PMFW == -1 && (FLAGS & 1 || n)) || (PMFW != -1 && (!(n) || n)))

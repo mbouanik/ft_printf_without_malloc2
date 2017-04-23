@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 15:18:46 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/16 01:27:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 02:36:00 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_display_arg_u_uintm_no_dash(t_type *lst, uint64_t n, int size)
 
 void	ft_display_arg_u_uintm_no_dash3(t_type *lst, uint64_t n, int size)
 {
-	if (FLAGS & 4)
+	if (FLAGS & 4 && PMFW != -1)
 	{
 		if (FLAGS & 8 && size++)
 			ft_memset_g_set(g_str, ' ', 1);

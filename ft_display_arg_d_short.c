@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 13:18:08 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/19 09:44:40 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 02:34:21 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		ft_display_arg_d_short_no_dash(t_type *lst, short n, int size)
 
 void		ft_display_arg_d_short_no_dash3(t_type *lst, short n, int size)
 {
-	if (FLAGS & 4)
+	if (FLAGS & 4 && PMFW != -1)
 	{
 		if (n < 0 || FLAGS & 16 || FLAGS & 8)
 		{

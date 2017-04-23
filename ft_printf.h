@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/20 20:17:25 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 15:42:03 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdint.h>
-# include <wchar.h>
 # include <locale.h>
+# include <wchar.h>
+# include <stdlib.h>
+# include <limits.h>
 # define FLAGS lst->flags
 # define PMFW lst->pmfw
 # define MFW lst->mfw
 # define MOD lst->mod
 # define SIZE lst->size
-# define BUFF_SIZE 64
+# define BUFF_SIZE 4096
 # define BASE 0x0101010101010101
-# define LOCALE setlocale(LC_ALL, "");
 
 char	g_str[BUFF_SIZE];
 short	g_p;
@@ -45,6 +46,7 @@ typedef void		(*t_func_arg)(t_type *, va_list);
 typedef void		(*t_func_flag)(t_type *);
 typedef void		(*t_func_c_uni)(wchar_t, t_type *);
 typedef void		(*t_func_str_uni)(wchar_t);
+typedef void		(*t_func_dig)(t_type *, va_list, char **f);
 
 typedef struct		s_arg
 {
@@ -60,7 +62,7 @@ typedef struct		s_flag
 
 typedef struct		s_arg_uni
 {
-	short			c;
+	long			c;
 	t_func_c_uni	f;
 }					t_arg_uni;
 
@@ -69,6 +71,12 @@ typedef struct		s_arg_str_uni
 	short			c;
 	t_func_str_uni	f;
 }					t_arg_str_uni;
+
+typedef struct		s_dig
+{
+	short			c;
+	t_func_dig		f;
+}					t_dig;
 
 int					ft_printf(char *format, ...);
 void				ft_assign_flags(char **f, t_type *lst, va_list list);
@@ -86,6 +94,8 @@ void				ft_display_arg_lint(t_type *lst, va_list list);
 void				ft_display_arg_lu(t_type *lst, va_list list);
 void				ft_display_arg_p(t_type *lst, va_list list);
 void				ft_display_arg_b(t_type *lst, va_list list);
+void				ft_display_arg_f(t_type *lst, va_list list);
+void				ft_display_arg_ff(t_type *lst, va_list list);
 void				ft_display_arg_u_us(t_type *lst, va_list list);
 void				ft_display_arg_d_intm(t_type *lst, va_list list);
 void				ft_display_arg_d_schar(t_type *lst, va_list list);
@@ -111,6 +121,8 @@ void				ft_memcpy_g(void *dest, const void *src, size_t n);
 void				ft_putstr_hexa(uintmax_t n);
 void				ft_putstr_x(uintmax_t n);
 void				ft_putstr_b(uintmax_t n);
+void				ft_putstr_float(double n, t_type *lst);
+void				ft_check_size_f(t_type *lst, int n);
 void				ft_flags_sign(t_type *lst, long n);
 int					ft_isalpha(int c);
 int					ft_atoi_s(char **str, va_list list);
@@ -141,8 +153,6 @@ void				ft_minus(t_type *lst);
 void				ft_blank(t_type *lst);
 void				ft_zero(t_type *lst);
 void				ft_plus(t_type *lst);
-void		ft_mfw(t_type *lst);
-void		ft_pmfw(t_type *lst);
 void				ft_check_size(t_type *lst, int n);
 void				ft_check_size_o(t_type *lst, long int n);
 void				ft_check_size_hexa(t_type *lst, uint64_t n);
@@ -159,5 +169,8 @@ void				ft_display_arg_c_uni_16_arg(wchar_t s);
 void				ft_display_arg_c_uni_21_arg(wchar_t s);
 size_t				ft_strlen_uni(wchar_t *s);
 int					ft_size_uni(wchar_t *s, t_type *lst);
+void				ft_str_null(t_type *lst);
+void 				ft_check_size_str(t_type *lst, char *s);
+void				ft_putstr_uni(wchar_t *s, t_type *lst);
 
 #endif

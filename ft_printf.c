@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/20 17:23:54 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/22 20:40:20 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ t_arg g_arg[] = {
 	{'o', &ft_display_arg_o},
 	{'O', &ft_display_arg_octal},
 	{'U', &ft_display_arg_uu},
+	{'f', &ft_display_arg_f},
+	{'F', &ft_display_arg_f},
+	{0, NULL}
 };
 
 void			ft_new(t_type *lst)
@@ -56,11 +59,11 @@ int				ft_printf(char *format, ...)
 		if ((j = -1) && *format == '%' && (format++) && *format)
 		{
 			ft_assign_flags(&format, &lst, list);
-			while (lst.arg_type != g_arg[j].c && j++ < 15)
+			while (lst.arg_type != g_arg[j].c && g_arg[++j].c)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
-		if (lst.arg_type && j == 16)
+		if (!(g_arg[j].c))
 			ft_display_no_arg(&lst);
 	}
 	ft_putstr_g(g_str);

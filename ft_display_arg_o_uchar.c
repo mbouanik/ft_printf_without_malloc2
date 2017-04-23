@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 14:20:51 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/19 09:45:27 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 02:35:13 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	ft_display_arg_o_uchar_no_dash(t_type *lst, unsigned char n, int size)
 
 void	ft_display_arg_o_uchar_no_dash3(t_type *lst, unsigned char n, int size)
 {
-	ft_memset_g_set(g_str, ' ', MFW - size);
+	if (FLAGS & 4 && PMFW != -1)
+		ft_memset_g_set(g_str, '0', MFW - size);
+	else
+		ft_memset_g_set(g_str, ' ', MFW - size);
 	if (FLAGS & 1 && g_p--)
 		ft_memset_g_set(g_str, '0', 1);
 	ft_putstr_octal(n);

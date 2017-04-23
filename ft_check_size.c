@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_arg_u_mod.c                             :+:      :+:    :+:   */
+/*   ft_check_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 20:59:27 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/21 15:11:52 by mbouanik         ###   ########.fr       */
+/*   Created: 2017/04/23 15:35:14 by mbouanik          #+#    #+#             */
+/*   Updated: 2017/04/23 15:37:50 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_arg g_arg_u[] = {
-	{104, &ft_display_arg_u_us},
-	{208, &ft_display_arg_u_uchar},
-	{108, &ft_display_arg_u_uintm},
-	{216, &ft_display_arg_u_uintm},
-	{106, &ft_display_arg_u_uintm},
-	{122, &ft_display_arg_u_uintm},
-};
-
-void		ft_display_arg_u_mod(t_type *lst, va_list list)
+void		ft_check_size_f(t_type *lst, int n)
 {
-	int j;
+	SIZE = ft_strlen_num(n) + 1;
+	if ((PMFW == 0 || PMFW > 6) && (PMFW = 6))
+		SIZE += 6;
+	else if (PMFW > 0 && PMFW < 6)
+		SIZE += PMFW;
+	if (PMFW == -1 && n == 0)
+		SIZE = 0;
+	ft_size(lst, SIZE);
+}
 
-	j = 0;
-	while (lst->mod != g_arg_u[j].c && j < 6)
-		++j;
-	if (lst->mod == g_arg_u[j].c)
-		g_arg_u[j].f(lst, list);
+void		ft_check_size_str(t_type *lst, char *s)
+{
+	if ((SIZE = ft_strlen(s)) && SIZE > PMFW && PMFW > 0)
+		SIZE = PMFW;
+	if (PMFW == -1)
+		SIZE = 0;
+	ft_size(lst, SIZE);
 }
