@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/04/23 15:53:38 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/04/23 21:00:48 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,11 @@ SRC = 	ft_printf.c\
 		ft_putstr_float.c\
 		ft_display_arg_f.c\
 		ft_str_null.c\
-		ft_check_size.c
+		ft_check_size.c\
+		ft_display_arg_e.c\
+		ft_putstr_float_e.c\
+		ft_display_arg_g.c\
+
 
 
 OBJ = $(SRC:.c=.o)

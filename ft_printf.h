@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 15:42:03 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 23:43:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct		s_type
 
 typedef void		(*t_func_arg)(t_type *, va_list);
 typedef void		(*t_func_flag)(t_type *);
-typedef void		(*t_func_c_uni)(wchar_t, t_type *);
-typedef void		(*t_func_str_uni)(wchar_t);
+typedef void		(*t_func_c_uni)(int, t_type *);
+typedef void		(*t_func_str_uni)(int);
 typedef void		(*t_func_dig)(t_type *, va_list, char **f);
 
 typedef struct		s_arg
@@ -95,7 +95,9 @@ void				ft_display_arg_lu(t_type *lst, va_list list);
 void				ft_display_arg_p(t_type *lst, va_list list);
 void				ft_display_arg_b(t_type *lst, va_list list);
 void				ft_display_arg_f(t_type *lst, va_list list);
-void				ft_display_arg_ff(t_type *lst, va_list list);
+void		ft_display_arg_e(t_type *lst, va_list list);
+void		ft_display_arg_g(t_type *lst, va_list list);
+void		ft_display_arg_a(t_type *lst, va_list list);
 void				ft_display_arg_u_us(t_type *lst, va_list list);
 void				ft_display_arg_d_intm(t_type *lst, va_list list);
 void				ft_display_arg_d_schar(t_type *lst, va_list list);
@@ -170,7 +172,11 @@ void				ft_display_arg_c_uni_21_arg(wchar_t s);
 size_t				ft_strlen_uni(wchar_t *s);
 int					ft_size_uni(wchar_t *s, t_type *lst);
 void				ft_str_null(t_type *lst);
-void 				ft_check_size_str(t_type *lst, char *s);
+void				ft_check_size_str(t_type *lst, char *s);
 void				ft_putstr_uni(wchar_t *s, t_type *lst);
+void			ft_putstr_float_e(double n, t_type *lst);
+void			ft_putstr_float_g(double n, t_type *lst);
+void		ft_check_size_g(t_type *lst, int n);
+void			ft_putstr_float_a(double n, t_type *lst);
 
 #endif

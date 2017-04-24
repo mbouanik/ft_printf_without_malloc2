@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/22 20:40:20 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/23 23:44:27 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ t_arg g_arg[] = {
 	{'U', &ft_display_arg_uu},
 	{'f', &ft_display_arg_f},
 	{'F', &ft_display_arg_f},
+	{'e', &ft_display_arg_e},
+	{'E', &ft_display_arg_e},
+	{'g', &ft_display_arg_g},
+	{'G', &ft_display_arg_g},
+	{'a', &ft_display_arg_a},
+	{'A', &ft_display_arg_a},
 	{0, NULL}
 };
 
@@ -63,7 +69,8 @@ int				ft_printf(char *format, ...)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
-		if (!(g_arg[j].c))
+		// printf("g_arg[j].c %d lst.arg_type %c\n", g_arg[j].c, lst.arg_type);
+		if (g_arg[j].c == 0)
 			ft_display_no_arg(&lst);
 	}
 	ft_putstr_g(g_str);
