@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 19:52:34 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/04 18:58:58 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/05/04 19:28:19 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,10 @@ void			ft_putstr_float_a(double n, t_type *lst)
 	else
 		n -= size;
 	PMFW = 13;
-	// printf("before %f\n", n);
 	while (PMFW-- > 0)
 	{
-		ft_putstr_hexa((unsigned long)n);
+		ft_putstr_hexa_a((unsigned long)n);
 		n = n - (long)n;
-		// printf("e %f\n", n);
 		n *= 16;
-		// printf("o %f\n", n);
 	}
 }
