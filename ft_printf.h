@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 23:43:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/05/04 18:28:22 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@
 # define BASE 0x0101010101010101
 
 char	g_str[BUFF_SIZE];
-short	g_p;
+int		g_p;
 int		g_size;
+int		g_keep;
 
 typedef struct		s_type
 {
@@ -177,6 +178,10 @@ void				ft_putstr_uni(wchar_t *s, t_type *lst);
 void			ft_putstr_float_e(double n, t_type *lst);
 void			ft_putstr_float_g(double n, t_type *lst);
 void		ft_check_size_g(t_type *lst, int n);
+void			ft_longtoa_g(long n);
+void			ft_putstr_float_gg(double n, t_type *lst);
 void			ft_putstr_float_a(double n, t_type *lst);
+void		ft_check_size_f_e(t_type *lst, int n);
+void		ft_check_size_a(t_type *lst, int n);
 
 #endif

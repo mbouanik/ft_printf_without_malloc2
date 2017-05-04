@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/24 00:30:35 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/05/01 19:33:55 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void		ft_assign(double n, t_type *lst)
 	else
 		n -= size;
 	while (PMFW-- > 0)
-	{
 		n *= 10;
-		ft_longtoa((long)n);
-		n = n - (long)n;
-	}
+	i = n * 10;
+	if (i % 10 >= 5)
+		n += 1;
+	ft_longtoa((long)n);
 }
 
 void		ft_e(t_type *lst, int e, int a)

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 23:44:27 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/04/29 18:35:07 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_arg g_arg[] = {
 	{0, NULL}
 };
 
-void			ft_new(t_type *lst)
+void			ft_new(t_type *lst, int *j)
 {
 	lst->flags = 0;
 	lst->mfw = 0;
@@ -47,33 +47,41 @@ void			ft_new(t_type *lst)
 	lst->mod = 0;
 	lst->size = 0;
 	lst->arg_type = 0;
+	*j = -1;
+}
+
+void			ft_init(void)
+{
+	g_size = 0;
+	g_p = 0;
+	g_keep = 1;
 }
 
 int				ft_printf(char *format, ...)
 {
 	va_list		list;
 	t_type		lst;
-	short		j;
+	int			j;
 
 	va_start(list, format);
-	g_size = 0;
-	g_p = 0;
-	while (*format)
+	ft_init();
+	while (*format && g_keep)
 	{
-		ft_new(&lst);
+		ft_new(&lst, &j);
 		ft_cp_until(g_str, &format, '%');
-		if ((j = -1) && *format == '%' && (format++) && *format)
+		if (*format == '%' && (format++) && *format)
 		{
 			ft_assign_flags(&format, &lst, list);
 			while (lst.arg_type != g_arg[j].c && g_arg[++j].c)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
-		// printf("g_arg[j].c %d lst.arg_type %c\n", g_arg[j].c, lst.arg_type);
 		if (g_arg[j].c == 0)
 			ft_display_no_arg(&lst);
 	}
 	ft_putstr_g(g_str);
 	va_end(list);
-	return (g_size += g_p);
+	if (g_keep)
+		g_size += g_p;
+	return (g_size);
 }
