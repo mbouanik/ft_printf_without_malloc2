@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/29 15:33:25 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/01 19:43:53 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/14 19:42:47 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,30 +111,9 @@ void			ft_putstr_float_g(double n, t_type *lst)
 
 	size = 1;
 	f = ft_strlen_num((long)n) + 1;
-	if (PMFW < f - 1 && PMFW != 0)
+	if ((PMFW < f - 1 && PMFW != 0) || (PMFW == 0 && f > 7 && (PMFW = 4)))
 	{
-		if (lst->arg_type == 'g')
-			lst->arg_type = 'e';
-		else
-			lst->arg_type = 'E';
-		ft_putstr_float_e_g(n, lst);
-		if (lst->arg_type == 'e')
-			lst->arg_type = 'g';
-		else
-			lst->arg_type = 'G';
-		return ;
-	}
-	else if (PMFW == 0 && f > 7 && (PMFW = 4))
-	{
-		if (lst->arg_type == 'g')
-			lst->arg_type = 'e';
-		else
-			lst->arg_type = 'E';
-		ft_putstr_float_e_g(n, lst);
-		if (lst->arg_type == 'e')
-			lst->arg_type = 'g';
-		else
-			lst->arg_type = 'G';
+		ft_putstr_float_g2(lst, n, f);
 		return ;
 	}
 	if (n < 0)
@@ -164,7 +143,10 @@ void			ft_putstr_float_g(double n, t_type *lst)
 	}
 	else
 	{
-		PMFW = 2;
-		ft_putstr_float_gg(n, lst);
+		PMFW = 7 - f;
+		if (n < 1)
+			PMFW = 7;
+		if (PMFW)
+			ft_putstr_float(n, lst);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/01 19:33:55 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/05/07 18:28:55 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_putstr_float_e(double n, t_type *lst)
 		n *= -1;
 	if (n < 1)
 		a = 1;
-	if (!a)
+	if (n > 1.0)
 	{
 		while (n > 0.9 && ++e)
 			n /= 10;

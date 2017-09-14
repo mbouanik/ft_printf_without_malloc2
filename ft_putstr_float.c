@@ -6,11 +6,19 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/01 19:51:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/14 19:45:49 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+// static void		ft_putstr_float_comma(long n)
+// {
+// 	if (n > 0)
+// 		ft_putstr_float_comma(n / 10);
+// 	if (n > 0)
+// 		g_str[g_p++] = n % 10 + 48;
+// }
 
 void			ft_putstr_float(double n, t_type *lst)
 {
@@ -30,12 +38,19 @@ void			ft_putstr_float(double n, t_type *lst)
 		n += size;
 	else
 		n -= size;
+	if ((long)(n *= 10) % 10 == 0)
+		i = 1;
 	while (PMFW-- > 0)
+	{
+		if (i == 1 && (long)n % 10 == 0)
+			g_str[g_p++] = (long)n % 10 + 48;
+		else
+			i = 0;
 		n *= 10;
-	i = n * 10;
-	if (i % 10 >= 5)
-		n += 1;
-	ft_longtoa((long)n);
+	}
+	if (((long)n % 10) >= 5)
+		n += 2;
+	ft_longtoa((long)n / 10);
 }
 
 void			ft_putstr_float_gg(double n, t_type *lst)

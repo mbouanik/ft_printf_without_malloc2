@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 02:32:42 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/28 19:28:37 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/05/06 16:39:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		ft_arg_type(t_type *lst, char **f)
 void			ft_assign_flags(char **f, t_type *lst, va_list list)
 {
 	ft_flags(f, lst);
-	if (**f == '*' || **f == '.' || ft_isdigit_s(**f))
+	if (ft_isdigit_s(**f) || **f == '*' || **f == '.')
 		while (!(ft_isalpha(**f)) && **f != '%' && **f)
 		{
 			if (ft_isdigit_s(**f) || **f == '*')
@@ -59,7 +59,7 @@ void			ft_assign_flags(char **f, t_type *lst, va_list list)
 				MFW = ft_atoi_s(f, list);
 				if (MFW < 0)
 				{
-					FLAGS += 2;
+					FLAGS |= 2;
 					MFW *= -1;
 				}
 			}
