@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/06 17:17:20 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/16 20:06:29 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 	wchar_t		s;
 
 	s = va_arg(list, wchar_t);
+// Create a function for this 
+	if (s > 0x10FFFF)
+	{
+		g_p = 0;
+		g_size = -1;
+		g_keep = 0;
+		return ;
+	}
 	SIZE = ft_strlen_b(s);
 	if (MB_CUR_MAX < 4)
 	{
