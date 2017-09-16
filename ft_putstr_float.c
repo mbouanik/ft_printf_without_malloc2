@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/16 11:59:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/16 19:32:17 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			ft_putstr_float(double n, t_type *lst)
 
 	size = 1;
 	ft_longtoa((long)n);
-	if (ft_g_zero(n, PMFW))
+	if (ft_g_zero(n, PMFW) && (lst->arg_type == 'g' || lst->arg_type == 'G'))
 		return ;
 	ft_memset_g(g_str, '.', 1);
 	if (PMFW == -1)
