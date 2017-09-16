@@ -6,19 +6,25 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/14 19:45:49 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/16 11:59:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static void		ft_putstr_float_comma(long n)
-// {
-// 	if (n > 0)
-// 		ft_putstr_float_comma(n / 10);
-// 	if (n > 0)
-// 		g_str[g_p++] = n % 10 + 48;
-// }
+int		ft_g_zero(double n, int a)
+{
+	int i;
+
+	i = 0;
+	while (a-- > 0)
+	{
+		if (i && (long)n % 10 >= 1)
+			return (0);
+		n *= 10;
+	}
+	return (1);
+}
 
 void			ft_putstr_float(double n, t_type *lst)
 {
@@ -27,6 +33,8 @@ void			ft_putstr_float(double n, t_type *lst)
 
 	size = 1;
 	ft_longtoa((long)n);
+	if (ft_g_zero(n, PMFW))
+		return ;
 	ft_memset_g(g_str, '.', 1);
 	if (PMFW == -1)
 		return ;
@@ -48,6 +56,9 @@ void			ft_putstr_float(double n, t_type *lst)
 			i = 0;
 		n *= 10;
 	}
+	// n /= 10;
+	// printf("%f\n", n);
+	// printf("%d\n", ((long)n % 10) >= 5);
 	if (((long)n % 10) >= 5)
 		n += 2;
 	ft_longtoa((long)n / 10);

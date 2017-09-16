@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 06:16:13 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 02:34:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/16 14:21:58 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void		ft_display_arg_dd_no_dash3(t_type *lst, long n, int size)
 			else if (n < 0 && --MFW)
 				ft_memset_g_set(g_str, '-', 1);
 		}
+		if (MFW && FLAGS & 4)
+			size += 1;
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
 	else
@@ -106,7 +108,7 @@ void		ft_display_arg_dd(t_type *lst, va_list list)
 
 	n = va_arg(list, long);
 	if ((SIZE = ft_strlen_num(n)) && PMFW == -1 && n == 0)
-		SIZE = 0;
+		SIZE = 1;
 	ft_size(lst, SIZE);
 	if (FLAGS & 2)
 		ft_display_arg_dd_dash(lst, n, SIZE);
