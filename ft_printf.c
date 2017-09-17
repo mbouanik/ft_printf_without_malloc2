@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/16 20:01:35 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/17 10:26:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void			ft_init(void)
 	g_size = 0;
 	g_p = 0;
 	g_keep = 1;
+	g_ok = 0;
 }
 
 int				ft_printf(char *format, ...)

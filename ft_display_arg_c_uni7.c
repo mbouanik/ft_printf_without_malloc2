@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 08:59:04 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/21 18:49:22 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/17 10:41:35 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_display_arg_c_uni_7(wchar_t s, t_type *lst)
 	}
 	else
 	{
-		if (MFW > 4)
+		if (MFW)
 		{
 			if (FLAGS & 4)
 				ft_memset_g_set(g_str, '0', MFW - 1);

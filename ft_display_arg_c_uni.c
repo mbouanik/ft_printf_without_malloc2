@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/16 20:06:29 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/17 11:21:41 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 	wchar_t		s;
 
 	s = va_arg(list, wchar_t);
-// Create a function for this 
-	if (s > 0x10FFFF)
+// Create a function for this
+	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF))
 	{
-		g_p = 0;
+		g_p = g_ok;
 		g_size = -1;
 		g_keep = 0;
 		return ;
@@ -57,12 +57,13 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 		if (s > 127 && s < 255)
 		{
 			ft_memset_g_set(g_str, s, 1);
+			ft_display_no_arg_c_uni(lst);
 			return ;
 		}
 		else if (s > 255)
 		{
 			g_keep = 0;
-			g_p--;
+			g_p -= g_ok;
 			g_size = -1;
 			return ;
 		}
@@ -71,4 +72,5 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 	while (g_arg_c_uni[j].c != SIZE && ++j < 22)
 		if (g_arg_c_uni[j].c == SIZE)
 			g_arg_c_uni[j].f(s, lst);
+	g_ok = g_p;
 }
