@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/17 11:12:39 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/17 12:32:34 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ void				ft_check_size_g(t_type *lst, double n);
 void				ft_longtoa_g(long n);
 void				ft_putstr_float_gg(double n, t_type *lst);
 void				ft_check_size_f_e(t_type *lst, int n);
-int		ft_g_zero(double n, int a);
+int			ft_g_zero(double n, int a);
 void		ft_display_no_arg_c_uni(t_type *lst);
 
 #endif
