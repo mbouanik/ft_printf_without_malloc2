@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 04:22:23 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/17 16:47:22 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/18 20:06:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		ft_display_arg_str_uni_c(wchar_t s)
 	short		j;
 	int			size;
 
+	// printf("%d\n", s);
 	size = ft_strlen_b(s);
 	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF))
 	{
@@ -66,7 +67,7 @@ void		ft_display_arg_str_uni_c(wchar_t s)
 		}
 	}
 	j = -1;
-	while (g_arg_str_uni[j].c != size && ++j < 22)
+	while (g_arg_str_uni[j].c != size && ++j < 22 && g_keep)
 		if (g_arg_str_uni[j].c == size)
 			g_arg_str_uni[j].f(s);
 }
@@ -101,26 +102,25 @@ void		ft_precision(wchar_t *s, t_type *lst)
 	int i;
 	int j;
 
+
 	i = 0;
 	j = 0;
 	accu = 0;
-	while (PMFW > 0 && s[j])
+	while (s[j])
 	{
 		i = ft_strlen_b(s[j]);
-		if (i >= 1 && i <= 7 && (accu += 1))
+		if (i > 0 && i <= 7 && (PMFW - 1 >= 0) && (accu += 1))
 			PMFW -= 1;
-		else if (i >= 8 && i <= 11 && (accu += 1))
+		else if (i > 7 && i <= 11 && (PMFW - 2 >= 0) && (accu += 1))
 			PMFW -= 2;
-		else if (i >= 12 && i <= 16 && (accu += 1))
+		else if (i > 11 && i <= 17 && (PMFW - 3 >= 0) && (accu += 1))
 			PMFW -= 3;
-		else if (i >= 17 && i <= 21 && (accu += 1))
+		else if (i > 17 && i <= 21 && (PMFW - 4 >= 0) && (accu += 1))
 			PMFW -= 4;
 		j++;
 	}
-	if (PMFW < 0)
-		accu -= 1;
-	if (accu <= SIZE)
-		SIZE = accu;
+	if ((PMFW = 1) && accu < SIZE)
+		SIZE = accu ;
 }
 
 void		ft_display_arg_str_uni(t_type *lst, va_list list)
