@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 04:22:23 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/18 20:32:20 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/19 20:02:57 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void		ft_display_arg_str_uni_c(wchar_t s)
 	short		j;
 	int			size;
 
-	// printf("%d\n", s);
 	size = ft_strlen_b(s);
 	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF))
 	{
@@ -51,14 +50,14 @@ void		ft_display_arg_str_uni_c(wchar_t s)
 		g_keep = 0;
 		return ;
 	}
-	if (MB_CUR_MAX < 4)
+	if (MB_CUR_MAX == 1)
 	{
-		if (s > 127 && s < 256)
+		if (s > 127 && s <= 255)
 		{
 			ft_memset_g_set(g_str, s, 1);
 			return ;
 		}
-		else if (s >= 256)
+		else if (s > 255)
 		{
 			g_keep = 0;
 			g_p = g_ok;
@@ -102,7 +101,6 @@ void		ft_precision(wchar_t *s, t_type *lst)
 	int i;
 	int j;
 
-
 	i = 0;
 	j = 0;
 	accu = 0;
@@ -120,7 +118,7 @@ void		ft_precision(wchar_t *s, t_type *lst)
 		j++;
 	}
 	if ((PMFW = 1) && accu < SIZE)
-		SIZE = accu ;
+		SIZE = accu;
 }
 
 void		ft_display_arg_str_uni(t_type *lst, va_list list)
@@ -145,7 +143,7 @@ void		ft_display_arg_str_uni(t_type *lst, va_list list)
 	{
 		if (PMFW != -1)
 			ft_putstr_uni(s, lst);
-		if (MFW > 0)
+		if (MFW > SIZE)
 			ft_memset_g_set(g_str, ' ', MFW);
 	}
 	else

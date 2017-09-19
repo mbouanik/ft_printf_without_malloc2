@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/17 16:16:54 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/19 19:50:16 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 		return ;
 	}
 	SIZE = ft_strlen_b(s);
-	if (MB_CUR_MAX < 4)
+	if (MB_CUR_MAX == 1)
 	{
-		if (s > 127 && s < 255)
+		if (s > 127 && s <= 255)
 		{
 			ft_memset_g_set(g_str, s, 1);
 			ft_display_no_arg_c_uni(lst);

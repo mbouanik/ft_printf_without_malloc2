@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 14:38:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/20 15:38:22 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/19 20:16:19 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,17 @@ int		ft_size_uni(wchar_t *s, t_type *lst)
 	while (s[j] && j < SIZE)
 	{
 		i = ft_strlen_b(s[j]);
+		if (MB_CUR_MAX == 1 && i > 0 && i <= 8)
+			accu = -1;
 		if (i >= 1 && i <= 7)
 			size += 1;
-		if (i >= 8 && i <= 11)
+		else if (i >= 8 && i <= 11)
 			size += 2;
-		if (i >= 12 && i <= 16)
+		else if (i >= 12 && i <= 16)
 			size += 3;
-		if (i >= 17 && i <= 21)
+		else if (i >= 17 && i <= 21)
 			size += 4;
 		j++;
 	}
-	return (size);
+	return (size + accu);
 }
