@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:19:41 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 15:24:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/19 20:40:32 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_str_null(t_type *lst)
 	{
 		if (PMFW != -1)
 			ft_memcpy_g(g_str, "(null)", SIZE);
-		if (MFW > 0)
+		if (MFW > 0 && MFW > SIZE)
 			ft_memset_g_set(g_str, ' ', MFW - SIZE);
 	}
 	else
