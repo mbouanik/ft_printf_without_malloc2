@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 16:15:43 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/05/01 18:48:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/23 21:41:19 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		ft_display_arg_e_no_dash3(t_type *lst, double n, int size)
 		ft_memset_g_set(g_str, ' ', MFW - size);
 		if (FLAGS & 16 && n >= 0 && --g_p)
 			ft_memset_g_set(g_str, '+', 1);
-		if (n < 0 && --g_p)
+		else if (n < 0 && --g_p)
 			ft_memset_g_set(g_str, '-', 1);
 	}
 }
@@ -99,7 +99,7 @@ void		ft_display_arg_e(t_type *lst, va_list list)
 		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
 			ft_display_arg_e_no_dash3(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
-			ft_flags_sign(lst, n);
+			ft_flags_sign_float(lst, n);
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float_e(n, lst);
 	}

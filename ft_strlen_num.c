@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 18:05:30 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/11 02:36:04 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/23 15:56:41 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t		ft_strlen_num(long long int n)
 		size = 1;
 	if (n < 0)
 		n *= -1;
-	while (n > 0)
+	while (n != 0)
 	{
 		n /= 10;
 		size++;

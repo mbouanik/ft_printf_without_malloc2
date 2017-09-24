@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:38:26 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/23 03:30:31 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/22 21:01:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		ft_display_arg_f(t_type *lst, va_list list)
 		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
 			ft_display_arg_f_no_dash3(lst, n, SIZE);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
-			ft_flags_sign(lst, n);
+			ft_flags_sign_float(lst, n);
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float(n, lst);
 	}
