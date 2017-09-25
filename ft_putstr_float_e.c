@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/24 21:50:29 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/25 16:10:36 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,16 @@ void		ft_assign(double n, t_type *lst)
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
 		n = n - (int)n;
 	}
-	if (lst->arg_type == 'e' || lst->arg_type == 'E')
+	// if (lst->arg_type == 'e' || lst->arg_type == 'E')
 		ft_round_up(n);
 }
 
 void		ft_e(t_type *lst, long e, long a)
 {
-	if (lst->arg_type == 'g')
-		lst->arg_type = 'e';
+	if (lst->arg_type == 'e' || lst->arg_type == 'g')
+		ft_memset_g(g_str, 'e', 1);
 	else
-		lst->arg_type = 'E';
-	ft_memset_g(g_str, lst->arg_type, 1);
+		ft_memset_g(g_str, 'E', 1);
 	if (a)
 		ft_memset_g(g_str, '-', 1);
 	else
@@ -65,10 +64,6 @@ void		ft_e(t_type *lst, long e, long a)
 	if (e < 10)
 		ft_memset_g(g_str, '0', 1);
 	ft_longtoa((long)e);
-	if (lst->arg_type == 'e')
-		lst->arg_type = 'g';
-	else
-		lst->arg_type = 'G';
 }
 
 void		ft_putstr_float_e(double n, t_type *lst)
@@ -108,9 +103,15 @@ void		ft_putstr_float_e(double n, t_type *lst)
 		ft_itoustr((uint64_t)(n *= -1));
 	else
 		ft_itoustr((uint64_t)n);
-	if (PMFW == -1)
+		printf("PMFW %d\n", PMFW);
+	if (PMFW == -1 || PMFW == 0)
+	{
+		if (PMFW == 0)
+			ft_e(lst, e, a);
 		return ;
-	ft_memset_g(g_str, '.', 1);
+	}
+	else
+		ft_memset_g(g_str, '.', 1);
 	j = (j - ((int)n * k / 10));
 	if (PMFW >= ft_strlen_num((long long)j))
 	{
