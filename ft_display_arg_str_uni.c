@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 04:22:23 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/19 20:02:57 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/30 18:20:38 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,18 @@ void		ft_display_arg_str_uni_c(wchar_t s)
 	int			size;
 
 	size = ft_strlen_b(s);
-	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF))
+	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF)
+			|| (MB_CUR_MAX == 1 && s > 255))
 	{
 		g_p = g_ok;
 		g_size = -1;
 		g_keep = 0;
 		return ;
 	}
-	if (MB_CUR_MAX == 1)
+	if (MB_CUR_MAX == 1 && s > 127 && s <= 255)
 	{
-		if (s > 127 && s <= 255)
-		{
-			ft_memset_g_set(g_str, s, 1);
-			return ;
-		}
-		else if (s > 255)
-		{
-			g_keep = 0;
-			g_p = g_ok;
-			g_size = -1;
-			return ;
-		}
+		ft_memset_g_set(g_str, s, 1);
+		return ;
 	}
 	j = -1;
 	while (g_arg_str_uni[j].c != size && ++j < 22 && g_keep)

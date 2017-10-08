@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 06:52:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/20 09:09:11 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/30 18:16:40 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_size(t_type *lst, int size)
 {
-	if (g_p + size >= BUFF_SIZE || g_p + MFW  >= BUFF_SIZE ||
+	if (g_p + size >= BUFF_SIZE || g_p + MFW >= BUFF_SIZE ||
 		g_p + PMFW >= BUFF_SIZE)
 	{
 		ft_putstr_g(g_str);

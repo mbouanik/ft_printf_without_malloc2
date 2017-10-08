@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 16:15:43 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/25 12:46:24 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/30 18:34:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void		ft_display_arg_e_no_dash(t_type *lst, double n, int size)
 
 void		ft_display_arg_e_no_dash3(t_type *lst, double n, int size)
 {
-	printf("HELLO %d\n", size);
 	if (FLAGS & 4)
 	{
 		ft_flags_sign(lst, n);

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/19 22:01:34 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/09/30 18:22:00 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,35 @@ t_arg_uni g_arg_c_uni[] = {
 	{21, &ft_display_arg_c_uni_21}
 };
 
+void		ft_display_no_arg_c_uni(t_type *lst)
+{
+	ft_size(lst, 1);
+	SIZE = 1;
+	if (FLAGS & 2)
+	{
+		if (MFW > 1)
+			ft_memset_g_set(g_str, ' ', MFW - SIZE);
+	}
+	else
+	{
+		if (MFW > SIZE)
+		{
+			if (FLAGS & 4)
+				ft_memset_g_set(g_str, '0', MFW - SIZE);
+			else
+				ft_memset_g_set(g_str, ' ', MFW - SIZE);
+		}
+	}
+}
+
 void		ft_display_arg_c_uni(t_type *lst, va_list list)
 {
 	short		j;
 	wchar_t		s;
 
 	s = va_arg(list, wchar_t);
-// Create a function for this
-	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF))
+	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF)
+			|| (MB_CUR_MAX == 1 && s > 255))
 	{
 		g_p = g_ok;
 		g_size = -1;
@@ -52,22 +73,12 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 		return ;
 	}
 	SIZE = ft_strlen_b(s);
-	if (MB_CUR_MAX == 1)
+	if (MB_CUR_MAX == 1 && s > 127 && s <= 255)
 	{
-		if (s > 127 && s <= 255)
-		{
-			ft_memset_g_set(g_str, s, 1);
-			ft_display_no_arg_c_uni(lst);
-			g_ok = g_p;
-			return ;
-		}
-		else if (s > 255)
-		{
-			g_keep = 0;
-			g_p = g_ok;
-			g_size = -1;
-			return ;
-		}
+		ft_memset_g_set(g_str, s, 1);
+		ft_display_no_arg_c_uni(lst);
+		g_ok = g_p;
+		return ;
 	}
 	j = -1;
 	while (g_arg_c_uni[j].c != SIZE && ++j < 22)

@@ -6,13 +6,42 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/25 14:53:57 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:47:09 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_round_up_f(double n)
+void			ft_num_up(int i, t_type *lst)
+{
+	if (SIZE == 0)
+	{
+		g_str[g_p + 1] = '1';
+		while (g_str[g_p] != '.')
+			g_p++;
+		g_str[g_p] = '0';
+		g_str[g_p + 1] = '.';
+		g_p = i;
+		g_str[g_p++] = '0';
+	}
+	else
+		g_p = i;
+}
+
+void			ft_round_up_g(void)
+{
+	if (g_str[g_p - 1] == '0')
+	{
+		--g_p;
+		while (g_str[g_p] == '0')
+			--g_p;
+		if (g_str[g_p] == '.')
+			--g_p;
+		g_p++;
+	}
+}
+
+void			ft_round_up_f(double n, t_type *lst)
 {
 	int i;
 
@@ -20,23 +49,25 @@ void	ft_round_up_f(double n)
 	g_p--;
 	if ((uint64_t)(n * 10) % 10 >= 5)
 	{
-		if (g_str[g_p] <= '8')
+		if (g_str[g_p] <= '8' && g_str[g_p] >= '0')
 			g_str[g_p] += 1;
 		else if (g_str[g_p] == '9')
 		{
-			while (g_str[g_p] == '9' || g_str[g_p] == '.')
+			while ((g_str[g_p] == '9' || g_str[g_p] == '.') && SIZE)
 			{
-				if (g_str[g_p] == '.')
+				if (g_str[g_p] == '.' && (--SIZE))
 					--g_p;
 				g_str[g_p] = '0';
-				g_p--;
-			}
-			if (g_str[g_p] == '.')
 				--g_p;
-			g_str[g_p] += 1;
+				--SIZE;
+			}
+			if (g_str[g_p] == '.' && (--SIZE))
+				--g_p;
+			if (SIZE)
+				g_str[g_p] += 1;
 		}
 	}
-	g_p = i;
+	ft_num_up(i, lst);
 }
 
 void			ft_putstr_float(double n, t_type *lst)
@@ -57,5 +88,7 @@ void			ft_putstr_float(double n, t_type *lst)
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
 		n = n - (int)n;
 	}
-	ft_round_up_f(n);
+	ft_round_up_f(n, lst);
+	if (lst->arg_type == 'g' || lst->arg_type == 'G')
+		ft_round_up_g();
 }

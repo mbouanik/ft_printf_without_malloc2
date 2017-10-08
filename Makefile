@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/09/13 18:22:30 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/09/30 18:50:27 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,8 +88,8 @@ SRC = 	ft_printf.c\
 		ft_putstr_float_e.c\
 		ft_display_arg_g.c\
 		ft_putstr_float_g.c\
-		ft_putstr_float_g2.c
-
+		ft_retrieve.c
+		
 OBJ = $(SRC:.c=.o)
 
 FLAG = -Wall -Werror -Wextra -O3
