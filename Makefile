@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2017/10/08 16:42:46 by mbouanik         ###   ########.fr        #
+#    Updated: 2017/10/08 16:43:47 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ SRC = 	ft_printf.c\
 
 OBJ = $(SRC:.c=.o)
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -O3
 
 all : $(NAME)
 
@@ -109,4 +109,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all, clean, fclean, re
+# .PHONY: all, clean, fclean, re
