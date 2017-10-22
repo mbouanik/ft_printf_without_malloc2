@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/30 19:17:11 by mbouanik         ###   ########.fr       */
+/*   Updated: 2017/10/22 18:57:50 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ void			ft_init(void)
 	g_ok = 0;
 }
 
+void			ft_arg(t_type *lst, int c)
+{
+	if (lst->arg_type == 'n')
+		ft_retrieve();
+	else if (c == 0)
+		ft_display_no_arg(lst);
+}
+
 int				ft_printf(char *format, ...)
 {
 	va_list		list;
@@ -75,8 +83,7 @@ int				ft_printf(char *format, ...)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
-		if (g_arg[j].c == 0)
-			ft_display_no_arg(&lst);
+		ft_arg(&lst, g_arg[j].c);
 	}
 	ft_putstr_g(g_str);
 	va_end(list);
