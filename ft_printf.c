@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/10/22 18:57:50 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 17:31:10 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			ft_new(t_type *lst, int *j)
 	lst->flags = 0;
 	lst->mfw = 0;
 	lst->pmfw = 0;
+	lst->pmfwg = 0;
 	lst->mod = 0;
 	lst->size = 0;
 	lst->arg_type = 0;

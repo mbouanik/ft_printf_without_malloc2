@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 16:15:43 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/30 18:34:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 17:48:56 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		ft_display_arg_e_dash(t_type *lst, double n, int size)
 		ft_memset_g_set(g_str, '0', PMFW - size);
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float_e(n, lst);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
 	else if (MFW < size && PMFW > size && PMFW >= MFW)
@@ -32,6 +33,7 @@ void		ft_display_arg_e_dash(t_type *lst, double n, int size)
 	{
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float_e(n, lst);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 	}
 	else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
@@ -51,6 +53,7 @@ void		ft_display_arg_e_no_dash(t_type *lst, double n, int size)
 	{
 		if (n < 0 || FLAGS & 16)
 			MFW--;
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 		if (n < 0 || FLAGS & 16)
 		{
@@ -70,10 +73,12 @@ void		ft_display_arg_e_no_dash3(t_type *lst, double n, int size)
 	if (FLAGS & 4)
 	{
 		ft_flags_sign(lst, n);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
 	else
 	{
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 		if (FLAGS & 16 && n >= 0 && --g_p)
 			ft_memset_g_set(g_str, '+', 1);
@@ -87,7 +92,7 @@ void		ft_display_arg_e(t_type *lst, va_list list)
 	double		n;
 
 	n = va_arg(list, double);
-	ft_check_size_f(lst, n);
+	ft_check_size_f_e(lst, n);
 	if (FLAGS & 2)
 		ft_display_arg_e_dash(lst, n, SIZE);
 	else

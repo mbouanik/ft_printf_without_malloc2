@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/30 18:22:00 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 20:26:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ void		ft_display_arg_c_uni(t_type *lst, va_list list)
 
 	s = va_arg(list, wchar_t);
 	if (s > 0x10FFFF || s < 0x000000 || (s >= 0xD800 && s <= 0xDFFF)
-			|| (MB_CUR_MAX == 1 && s > 255))
+			|| ((MB_CUR_MAX == 1 && s > 255) && (g_keep = 0)))
 	{
 		g_p = g_ok;
 		g_size = -1;
-		g_keep = 0;
 		return ;
 	}
 	SIZE = ft_strlen_b(s);
-	if (MB_CUR_MAX == 1 && s > 127 && s <= 255)
+	if (MB_CUR_MAX == 1 && s > 127 && s <= 255 && (g_keep = 0))
 	{
 		ft_memset_g_set(g_str, s, 1);
 		ft_display_no_arg_c_uni(lst);
 		g_ok = g_p;
+		g_size = -1;
 		return ;
 	}
 	j = -1;

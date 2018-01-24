@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/10/22 15:03:42 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 17:58:07 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # include <locale.h>
 # include <wchar.h>
 # include <stdlib.h>
-# include <limits.h>
 # define FLAGS lst->flags
 # define PMFW lst->pmfw
+# define PMFWG lst->pmfwg
 # define MFW lst->mfw
 # define MOD lst->mod
 # define SIZE lst->size
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 100
 # define BASE 0x0101010101010101
 
 char	g_str[BUFF_SIZE];
@@ -39,6 +39,7 @@ typedef struct		s_type
 	short			flags;
 	int				mfw;
 	int				pmfw;
+	int				pmfwg;
 	short			mod;
 	int				size;
 	char			arg_type;
@@ -180,13 +181,14 @@ void				ft_putstr_float_e(double n, t_type *lst);
 void				ft_putstr_float_g(double n, t_type *lst);
 void				ft_putstr_float_g2(t_type *lst, double n, int f);
 void				ft_putstr_float_e_g(double n, t_type *lst);
-void				ft_check_size_g(t_type *lst, uint64_t n);
+void				ft_check_size_g(t_type *lst, double n);
 void				ft_longtoa_g(long n);
 void				ft_putstr_float_gg(double n, t_type *lst);
-void				ft_check_size_f_e(t_type *lst, uint64_t n);
+void				ft_check_size_f_e(t_type *lst, double n);
 void				ft_display_no_arg_c_uni(t_type *lst);
 void				ft_flags_sign_float(t_type *lst, double n);
 void				ft_round_up(double n);
 void				ft_retrieve(void);
-
+void				ft_display_mfw(t_type *lst);
+size_t				ft_strlen_comma(float n);
 #endif

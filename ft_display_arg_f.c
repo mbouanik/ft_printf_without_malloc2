@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:38:26 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/22 21:01:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/17 13:43:49 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		ft_display_arg_f_dash(t_type *lst, double n, int size)
 		ft_memset_g_set(g_str, '0', PMFW - size);
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float(n, lst);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
 	else if (MFW < size && PMFW > size && PMFW >= MFW)
@@ -32,6 +33,7 @@ void		ft_display_arg_f_dash(t_type *lst, double n, int size)
 	{
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_float(n, lst);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 	}
 	else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
@@ -51,6 +53,7 @@ void		ft_display_arg_f_no_dash(t_type *lst, double n, int size)
 	{
 		if (n < 0 || FLAGS & 16)
 			MFW--;
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 		if (n < 0 || FLAGS & 16)
 		{
@@ -70,10 +73,12 @@ void		ft_display_arg_f_no_dash3(t_type *lst, double n, int size)
 	if (FLAGS & 4)
 	{
 		ft_flags_sign(lst, n);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
 	else
 	{
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 		if (FLAGS & 16 && n >= 0 && --g_p)
 			ft_memset_g_set(g_str, '+', 1);

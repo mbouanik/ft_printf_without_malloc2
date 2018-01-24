@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/29 15:33:25 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/10/08 13:53:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 17:51:27 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ void			ft_putstr_float_g(double n, t_type *lst)
 
 	i = ft_strlen_num((long long)n);
 	if (g_ok == 1)
-	{
-		if (PMFW == i)
-			PMFW = -1;
 		ft_putstr_float(n, lst);
-	}
 	else
 	{
 		if (PMFW != -1 || PMFW > 0)

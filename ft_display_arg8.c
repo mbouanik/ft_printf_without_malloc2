@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:34:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/15 02:27:50 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/17 14:58:54 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void	ft_display_p_dash(t_type *lst, uint64_t n, int size)
 	{
 		ft_memset_g_set(g_str, '0', PMFW - size);
 		ft_putstr_hexa(n);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
 	else if (MFW >= size && (PMFW <= size || PMFW == 0))
 	{
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_hexa(n);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 	}
 	else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
@@ -50,6 +52,7 @@ void	ft_display_p_no_dash(t_type *lst, uint64_t n, int size)
 {
 	if (MFW > PMFW)
 	{
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 		ft_memcpy_g(g_str, "0x", 2);
 		ft_memset_g_set(g_str, '0', PMFW - size);
@@ -65,10 +68,12 @@ void	ft_display_p_no_dash3(t_type *lst, uint64_t n, int size)
 	if (FLAGS & 4 && PMFW == 0)
 	{
 		ft_memcpy_g(g_str, "0x", 2);
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
 	else
 	{
+		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - size);
 		ft_memcpy_g(g_str, "0x", 2);
 	}

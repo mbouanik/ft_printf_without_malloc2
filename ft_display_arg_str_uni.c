@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 04:22:23 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/10/22 15:04:59 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/24 15:48:23 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		ft_display_arg_str_uni_no_dash(t_type *lst, wchar_t *s)
 {
 	if (MFW > 0)
 	{
+		ft_display_mfw(lst);
 		if (FLAGS & 4)
 			ft_memset_g_set(g_str, '0', MFW);
 		else
