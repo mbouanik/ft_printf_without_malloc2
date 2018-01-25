@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 18:05:30 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 17:50:42 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/25 17:53:36 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,48 @@ size_t		ft_strlen_comma(float n)
 	if ((((uint64_t)(n)) % 10) != 0)
 		++i;
 	return (i);
+}
+
+size_t		ft_strlen_comma_less_than_one(t_type *lst, double n)
+{
+	size_t i;
+
+	i = 0;
+	while ((((uint64_t)(n *= 10)) % 10) != 0)
+		++i;
+	n += 00.1;
+	if ((((uint64_t)(n)) % 10) != 0)
+		++i;
+	return (i);
+}
+
+int			ft_choice(t_type *lst, double n)
+{
+	int e;
+	int a;
+
+	if (n < 0.0)
+		n *= -1;
+	if (n < 1.0)
+		a = 1;
+	// if (n > 1.0)
+	// {
+	// 	while (n > 0.9 && ++e)
+	// 	{
+	// 		n /= 10;
+	// 		// *k *= 10;
+	// 	}
+	// 	e -= 1;
+	// 	n *= 10;
+	// }
+	// else
+	// {
+		while (n < 0.9)
+		{
+			n *= 10;
+			e++;
+		}
+	// }
+	// printf("%d\n", e);
+	return (e);
 }

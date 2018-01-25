@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/29 15:33:25 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 17:51:27 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/25 15:24:55 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void			ft_round_up(double n)
 	g_p = i;
 }
 
-void			ft_putstr_float_g(double n, t_type *lst)
+void			ft_putstr_float_g(long double n, t_type *lst)
 {
 	int i;
 
-	i = ft_strlen_num((long long)n);
+	i = ft_strlen_num((uint64_t)n);
 	if (g_ok == 1)
 		ft_putstr_float(n, lst);
 	else

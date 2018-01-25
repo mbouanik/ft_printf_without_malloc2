@@ -6,23 +6,28 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 20:29:33 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/25 17:42:25 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_assign(double n, t_type *lst)
+void		ft_assign(long double n, t_type *lst)
 {
+	int i;
+	long double j;
+
+	i = 0;
+	j  = 0.1;
 	if (n < 0)
 		n *= -1;
 	ft_itoustr((uint64_t)n);
 	n = n - (uint64_t)n;
 	while (PMFW-- > 0)
 	{
-		n *= 10;
+		n = (long double)n * (long double)10;
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
-		n = n - (int)n;
+		n = (long double)n - (int)n;
 	}
 	ft_round_up(n);
 }
@@ -42,9 +47,9 @@ void		ft_e(t_type *lst, long e, long a)
 	ft_longtoa((long)e);
 }
 
-double		ft_double(double n, int *e, int *a, uint64_t *k)
+double		ft_double(long double n, int *e, int *a, uint64_t *k)
 {
-	if (n < 0)
+	if (n < 0.0)
 		n *= -1;
 	if (n < 1.0)
 		*a = 1;
@@ -69,28 +74,38 @@ double		ft_double(double n, int *e, int *a, uint64_t *k)
 	return (n);
 }
 
-void		ft_assign_e(double n, double j, int e, t_type *lst)
+void		ft_assign_e(long double n, long double j, int e, t_type *lst)
 {
-	if (PMFW >= (int)ft_strlen_num((uint64_t)j))
+	double i;
+	int u;
+
+	i = 1.0;
+	u= 0;
+	if (PMFW >= (uint64_t)ft_strlen_num((uint64_t)j))
 	{
 		if (e == 0)
 			j *= 10;
-		PMFW -= (int)ft_strlen_num((uint64_t)j);
-		ft_assign(j, lst);
+		PMFW -= (uint64_t)ft_strlen_num((uint64_t)j);
+		while ((uint64_t)j % 10 == 0 && (i /= 10))
+			j *= 10;
+		// i /=10;
+		// j += i;
+		j = j - (uint64_t)j;
+		ft_assign(j * 10, lst);
 	}
 	else
 	{
 		PMFW -= 1;
-		ft_assign((n - (int)n) * 10, lst);
+		ft_assign((n - (uint64_t)n) * 10, lst);
 	}
 }
 
 void		ft_putstr_float_e(double n, t_type *lst)
 {
-	int			e;
-	int			a;
-	double		j;
-	uint64_t	k;
+	int				e;
+	int				a;
+	long double		j;
+	uint64_t		k;
 
 	j = n;
 	k = 1;

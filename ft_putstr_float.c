@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 17:49:59 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/25 17:42:52 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			ft_round_up_f(double n, t_type *lst)
 	ft_num_up(i, lst);
 }
 
-void			ft_putstr_float(double n, t_type *lst)
+void			ft_putstr_float(long double n, t_type *lst)
 {
 	if (n < 0)
 		ft_itoustr((uint64_t)(n *= -1));
@@ -79,12 +79,12 @@ void			ft_putstr_float(double n, t_type *lst)
 	if (PMFW == -1)
 		return ;
 	ft_memset_g(g_str, '.', 1);
-	n = n - (uint64_t)n;
+	n = (long double)n - (uint64_t)n;
 	while (PMFW-- > 0)
 	{
 		n *= 10;
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
-		n = n - (int)n;
+		n = (long double)n - (uint64_t)n;
 	}
 	ft_round_up_f(n, lst);
 	if (lst->arg_type == 'g' || lst->arg_type == 'G')

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:57:29 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 20:31:24 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/25 15:30:48 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void		ft_display_arg_g_dash(t_type *lst, double n)
 			ft_memset_g_set(g_str, ' ', MFW - SIZE);
 		}
 	}
+}
+
+void		ft_display_arg_g_no_dash2(t_type *lst, double n)
+{
+	ft_flags_sign(lst, n);
+	ft_memset_g_set(g_str, '0', PMFW - SIZE);
 }
 
 void		ft_display_arg_g_no_dash(t_type *lst, double n)
@@ -82,7 +88,7 @@ void		ft_display_arg_g_no_dash3(t_type *lst, double n)
 
 void		ft_display_arg_g(t_type *lst, va_list list)
 {
-	double		n;
+	long double		n;
 
 	n = va_arg(list, double);
 	ft_check_size_g(lst, n);
