@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/26 09:57:07 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/26 13:23:02 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void		ft_assign(long double n, t_type *lst)
 {
-	int i;
-	long double j;
-
-	i = 0;
-	j  = 10;
 	if (n < 0)
 		n *= -1;
 	ft_itoustr((uint64_t)n);
@@ -78,7 +73,7 @@ void		ft_assign_e(long double n, long double j, int e, t_type *lst)
 {
 	if (j < 0)
 		j *= -1;
-	if (PMFW >= (uint64_t)ft_strlen_num((uint64_t)j))
+	if (PMFW >= (int)ft_strlen_num((uint64_t)j))
 	{
 		if (e == 0)
 			j *= 10;
