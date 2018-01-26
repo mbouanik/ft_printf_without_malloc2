@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 14:50:04 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/26 11:25:00 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/26 13:21:30 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void			ft_less_than_one(t_type *lst, double n)
 {
 	int s;
 
-	s = ft_choice(lst,n);
-	if (s <= 4  && (g_ok = 1))
+	s = ft_choice(n);
+	if (s <= 4 && (g_ok = 1))
 	{
 		PMFW = PMFWG + 2;
 		SIZE = PMFW + 1;
