@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:35:14 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/25 17:54:59 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/26 11:26:01 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void		ft_check_size_f_g(t_type *lst, double n)
 {
 	SIZE = ft_strlen_num((uint64_t)n);
 	PMFW = ft_strlen_comma(n - (uint64_t)n);
-	// if (PMFW == 0 && PMFWG > 0)
-	// 	PMFW = PMFWG;
 	if (SIZE + PMFW > 10 || (PMFWG > SIZE && PMFW > SIZE))
 	{
 		if (PMFWG > SIZE)
@@ -55,7 +53,7 @@ void		ft_check_size_f_g(t_type *lst, double n)
 	ft_size(lst, SIZE);
 }
 
-void		ft_check_size_f_e(t_type *lst, double n)
+void		ft_check_size_f_e(t_type *lst, long double n)
 {
 	SIZE = 1;
 	if (PMFW == 1)
@@ -76,27 +74,6 @@ void		ft_check_size_str(t_type *lst, char *s)
 	if (PMFW == -1)
 		SIZE = 0;
 	ft_size(lst, SIZE);
-}
-
-void ft_less_than_one(t_type *lst, double n)
-{
-	int s;
-
-	// printf("%d\n", PMFW);
-	s = ft_choice(lst,n);
-	// printf("%d\n", s);
-	if (s <= 5  && (g_ok = 1))
-	{
-		PMFW = PMFWG + 2;
-		SIZE = PMFW + 1;
-		// g_ok = 1;
-	}
-	else
-	{
-		// PMFW = ft_strlen_comma(n - (uint64_t)n);
-		// SIZE  -= 2;
-		ft_check_size_f_e(lst, n);
-	}
 }
 
 void		ft_check_size_g(t_type *lst, double n)

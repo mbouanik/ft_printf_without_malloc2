@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/25 17:42:25 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/26 09:57:07 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void		ft_assign(long double n, t_type *lst)
 	long double j;
 
 	i = 0;
-	j  = 0.1;
+	j  = 10;
 	if (n < 0)
 		n *= -1;
 	ft_itoustr((uint64_t)n);
 	n = n - (uint64_t)n;
 	while (PMFW-- > 0)
 	{
-		n = (long double)n * (long double)10;
+		n = (long double)n * 10;
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
-		n = (long double)n - (int)n;
+		n = n - (uint64_t)n;
 	}
 	ft_round_up(n);
 }
@@ -76,22 +76,17 @@ double		ft_double(long double n, int *e, int *a, uint64_t *k)
 
 void		ft_assign_e(long double n, long double j, int e, t_type *lst)
 {
-	double i;
-	int u;
-
-	i = 1.0;
-	u= 0;
+	if (j < 0)
+		j *= -1;
 	if (PMFW >= (uint64_t)ft_strlen_num((uint64_t)j))
 	{
 		if (e == 0)
 			j *= 10;
 		PMFW -= (uint64_t)ft_strlen_num((uint64_t)j);
-		while ((uint64_t)j % 10 == 0 && (i /= 10))
+		while ((uint64_t)j % 10 == 0)
 			j *= 10;
-		// i /=10;
-		// j += i;
-		j = j - (uint64_t)j;
-		ft_assign(j * 10, lst);
+		j = (long double)j - (uint64_t)j;
+		ft_assign((long double)j * 10, lst);
 	}
 	else
 	{
@@ -100,7 +95,7 @@ void		ft_assign_e(long double n, long double j, int e, t_type *lst)
 	}
 }
 
-void		ft_putstr_float_e(double n, t_type *lst)
+void		ft_putstr_float_e(long double n, t_type *lst)
 {
 	int				e;
 	int				a;
@@ -122,7 +117,7 @@ void		ft_putstr_float_e(double n, t_type *lst)
 	}
 	else
 		ft_memset_g(g_str, '.', 1);
-	j = (j - ((int)n * k / 10));
+	j = (j - ((uint64_t)n * k / 10));
 	ft_assign_e(n, j, e, lst);
 	ft_e(lst, e, a);
 }

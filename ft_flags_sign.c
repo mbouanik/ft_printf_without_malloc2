@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 14:50:04 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 14:56:14 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/01/26 11:25:00 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ void			ft_flags_sign_float(t_type *lst, double n)
 		ft_memset_g(g_str, ' ', 1);
 	else if (n < 0 && --MFW)
 		ft_memset_g(g_str, '-', 1);
+}
+
+void			ft_less_than_one(t_type *lst, double n)
+{
+	int s;
+
+	s = ft_choice(lst,n);
+	if (s <= 4  && (g_ok = 1))
+	{
+		PMFW = PMFWG + 2;
+		SIZE = PMFW + 1;
+	}
+	else
+		ft_check_size_f_e(lst, n);
 }
 
 void			ft_display_mfw(t_type *lst)
