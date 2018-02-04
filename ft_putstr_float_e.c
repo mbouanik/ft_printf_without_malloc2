@@ -6,28 +6,28 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/26 13:23:02 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/04 15:54:43 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_assign(long double n, t_type *lst)
+void			ft_assign(long double n, t_type *lst)
 {
 	if (n < 0)
 		n *= -1;
 	ft_itoustr((uint64_t)n);
-	n = n - (uint64_t)n;
+	n = (long double)n - (uint64_t)n;
 	while (PMFW-- > 0)
 	{
-		n = (long double)n * 10;
+		n *= 10;
 		g_str[g_p++] = (uint64_t)n % 10 + 48;
-		n = n - (uint64_t)n;
+		n = (long double)n - (uint64_t)n;
 	}
 	ft_round_up(n);
 }
 
-void		ft_e(t_type *lst, long e, long a)
+void			ft_e(t_type *lst, long e, long a)
 {
 	if (lst->arg_type == 'e' || lst->arg_type == 'g')
 		ft_memset_g(g_str, 'e', 1);
@@ -42,7 +42,7 @@ void		ft_e(t_type *lst, long e, long a)
 	ft_longtoa((long)e);
 }
 
-double		ft_double(long double n, int *e, int *a, uint64_t *k)
+long double		ft_double(long double n, int *e, int *a, uint64_t *k)
 {
 	if (n < 0.0)
 		n *= -1;
@@ -69,18 +69,15 @@ double		ft_double(long double n, int *e, int *a, uint64_t *k)
 	return (n);
 }
 
-void		ft_assign_e(long double n, long double j, int e, t_type *lst)
+void			ft_assign_e(long double n, long double j, int e, t_type *lst)
 {
-	if (j < 0)
-		j *= -1;
 	if (PMFW >= (int)ft_strlen_num((uint64_t)j))
 	{
 		if (e == 0)
 			j *= 10;
-		PMFW -= (uint64_t)ft_strlen_num((uint64_t)j);
+		PMFW -= (uint64_t)ft_strlen_num((uint64_t)j) + 1;
 		while ((uint64_t)j % 10 == 0)
 			j *= 10;
-		j = (long double)j - (uint64_t)j;
 		ft_assign((long double)j * 10, lst);
 	}
 	else
@@ -90,7 +87,7 @@ void		ft_assign_e(long double n, long double j, int e, t_type *lst)
 	}
 }
 
-void		ft_putstr_float_e(long double n, t_type *lst)
+void			ft_putstr_float_e(long double n, t_type *lst)
 {
 	int				e;
 	int				a;
@@ -104,6 +101,8 @@ void		ft_putstr_float_e(long double n, t_type *lst)
 	n = ft_double(n, &e, &a, &k);
 	g_ok = g_p;
 	ft_itoustr((uint64_t)n);
+	if (j < 0)
+		j *= -1;
 	if (PMFW == -1 || PMFW == 0)
 	{
 		if (PMFW == 0)
@@ -113,6 +112,6 @@ void		ft_putstr_float_e(long double n, t_type *lst)
 	else
 		ft_memset_g(g_str, '.', 1);
 	j = (j - ((uint64_t)n * k / 10));
-	ft_assign_e(n, j, e, lst);
+	ft_assign_e((long double)n, j, e, lst);
 	ft_e(lst, e, a);
 }
