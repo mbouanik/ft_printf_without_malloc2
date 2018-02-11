@@ -6,32 +6,38 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 19:03:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/17 13:59:11 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/11 20:09:20 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_display_arg_uu_dash(t_type *lst, unsigned long n, int size)
+void		ft_display_arg_uu_no_dash2(t_type *lst, unsigned long n)
 {
-	if (MFW > size && PMFW > size && PMFW < MFW)
+	if ((FLAGS & 2) == 0)
+		if (FLAGS & 8 && PMFW++ && SIZE++)
+			ft_memset_g_set(g_str, ' ', 1);
+	ft_display_pmfw(lst);
+	ft_memset_g_set(g_str, '0', PMFW - SIZE);
+	ft_itoustr(n);
+}
+
+void		ft_display_arg_uu_dash(t_type *lst, unsigned long n)
+{
+	if (MFW > SIZE && PMFW > SIZE && PMFW < MFW)
 	{
-		ft_memset_g_set(g_str, '0', PMFW - size);
-		ft_itoustr(n);
+		ft_display_arg_uu_no_dash2(lst, n);
 		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
 	}
-	else if ((MFW < size && PMFW > size) || PMFW > MFW || PMFW == MFW)
-	{
-		ft_memset_g_set(g_str, '0', PMFW - size);
-		ft_itoustr(n);
-	}
-	else if (MFW > size && PMFW < size)
+	else if ((MFW < SIZE && PMFW > SIZE) || PMFW > MFW || PMFW == MFW)
+		ft_display_arg_uu_no_dash2(lst, n);
+	else if (MFW > SIZE && PMFW < SIZE)
 	{
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_itoustr(n);
 		ft_display_mfw(lst);
-		ft_memset_g_set(g_str, ' ', MFW - size);
+		ft_memset_g_set(g_str, ' ', MFW - SIZE);
 	}
 	else
 	{
@@ -40,38 +46,31 @@ void		ft_display_arg_uu_dash(t_type *lst, unsigned long n, int size)
 	}
 }
 
-void		ft_display_arg_uu_no_dash2(t_type *lst, unsigned long n, int size)
-{
-	if (FLAGS & 8 && PMFW++ && size++)
-		ft_memset_g_set(g_str, ' ', 1);
-	ft_memset_g_set(g_str, '0', PMFW - size);
-	ft_itoustr(n);
-}
-
-void		ft_display_arg_uu_no_dash(t_type *lst, unsigned long n, int size)
+void		ft_display_arg_uu_no_dash(t_type *lst, unsigned long n)
 {
 	if (MFW > PMFW)
 	{
 		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, ' ', MFW - PMFW);
-		ft_memset_g_set(g_str, '0', PMFW - size);
+		ft_display_pmfw(lst);
+		ft_memset_g_set(g_str, '0', PMFW - SIZE);
 		ft_itoustr(n);
 	}
 	else if (PMFW >= MFW)
-		ft_display_arg_uu_no_dash2(lst, n, size);
+		ft_display_arg_uu_no_dash2(lst, n);
 }
 
-void		ft_display_arg_uu_no_dash3(t_type *lst, unsigned long n, int size)
+void		ft_display_arg_uu_no_dash3(t_type *lst, unsigned long n)
 {
 	ft_display_mfw(lst);
 	if (FLAGS & 4 && PMFW != -1)
 	{
-		if (FLAGS & 8 && size++)
+		if (FLAGS & 8 && SIZE++)
 			ft_memset_g_set(g_str, ' ', 1);
-		ft_memset_g_set(g_str, '0', MFW - size);
+		ft_memset_g_set(g_str, '0', MFW - SIZE);
 	}
 	else
-		ft_memset_g_set(g_str, ' ', MFW - size);
+		ft_memset_g_set(g_str, ' ', MFW - SIZE);
 	if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 		ft_itoustr(n);
 }
@@ -84,15 +83,15 @@ void		ft_display_arg_uu(t_type *lst, va_list list)
 	SIZE = ft_strlen_num(n);
 	ft_size(lst, SIZE);
 	if (FLAGS & 2)
-		ft_display_arg_uu_dash(lst, n, SIZE);
+		ft_display_arg_uu_dash(lst, n);
 	else
 	{
 		if (MFW > SIZE && PMFW > SIZE)
-			ft_display_arg_uu_no_dash(lst, n, SIZE);
+			ft_display_arg_uu_no_dash(lst, n);
 		else if ((MFW <= SIZE || MFW == 0) && PMFW >= SIZE)
-			ft_display_arg_uu_no_dash2(lst, n, SIZE);
+			ft_display_arg_uu_no_dash2(lst, n);
 		else if (MFW >= SIZE && (PMFW <= SIZE || PMFW == 0))
-			ft_display_arg_uu_no_dash3(lst, n, SIZE);
+			ft_display_arg_uu_no_dash3(lst, n);
 		else if ((MFW <= SIZE || MFW == 0) && (PMFW <= SIZE || PMFW == 0))
 		{
 			if (FLAGS & 8)

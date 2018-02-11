@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 14:50:04 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/26 13:21:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/11 19:31:44 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void			ft_less_than_one(t_type *lst, double n)
 	s = ft_choice(n);
 	if (s <= 4 && (g_ok = 1))
 	{
-		PMFW = PMFWG + 2;
-		SIZE = PMFW + 1;
+		SIZE = ft_strlen_num((uint64_t)n);
+		PMFW = ft_strlen_comma(n - (uint64_t)n);
+		SIZE += PMFW + 1;
 	}
 	else
 		ft_check_size_f_e(lst, n);
@@ -62,6 +63,25 @@ void			ft_display_mfw(t_type *lst)
 			ft_putstr_g(g_str);
 			if (MFW > BUFF_SIZE)
 				MFW -= BUFF_SIZE;
+			g_size += BUFF_SIZE;
+		}
+		g_p = 0;
+	}
+}
+
+void			ft_display_pmfw(t_type *lst)
+{
+	if (PMFW > BUFF_SIZE)
+	{
+		ft_putstr_g(g_str);
+		g_size += g_p;
+		g_p = 0;
+		ft_memset_g_set(g_str, '0', BUFF_SIZE);
+		while (PMFW > BUFF_SIZE)
+		{
+			ft_putstr_g(g_str);
+			if (PMFW > BUFF_SIZE)
+				PMFW -= BUFF_SIZE;
 			g_size += BUFF_SIZE;
 		}
 		g_p = 0;

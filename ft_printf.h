@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:57 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/26 13:20:30 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/11 20:15:06 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,11 +188,12 @@ void				ft_check_size_f_e(t_type *lst, long double n);
 void				ft_display_no_arg_c_uni(t_type *lst);
 void				ft_flags_sign_float(t_type *lst, double n);
 void				ft_round_up(double n);
-void				ft_retrieve(void);
+void				ft_retrieve(va_list list);
 void				ft_display_mfw(t_type *lst);
 size_t				ft_strlen_comma(float n);
 int					ft_choice(double n);
 size_t				ft_strlen_comma_less_than_one(double n);
 void				ft_less_than_one(t_type *lst, double n);
+void				ft_display_pmfw(t_type *lst);
 
 #endif

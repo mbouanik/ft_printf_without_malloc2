@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 16:15:43 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/04 14:41:04 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/11 19:36:39 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void		ft_display_arg_e_no_dash(t_type *lst, double n, int size)
 
 void		ft_display_arg_e_no_dash3(t_type *lst, long double n, int size)
 {
+	ft_flags_sign(lst, n);
 	if (FLAGS & 4)
 	{
-		ft_flags_sign(lst, n);
 		ft_display_mfw(lst);
 		ft_memset_g_set(g_str, '0', MFW - size);
 	}
