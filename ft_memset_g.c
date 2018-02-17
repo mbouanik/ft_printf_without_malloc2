@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 09:12:33 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/11 15:24:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 16:32:26 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	ft_memset_g(void *b, wchar_t c, size_t len)
 	str = (char *)b;
 	if (len)
 		while (len--)
+		{
 			str[g_p++] = (wchar_t)c;
+			if (g_p + 1 > BUFF_SIZE)
+				ft_size_s();
+		}
 }
 
 void	ft_memcpy_g(void *dest, const void *src, size_t n)
@@ -31,7 +35,11 @@ void	ft_memcpy_g(void *dest, const void *src, size_t n)
 	des = (char*)dest;
 	if (n)
 		while (n--)
+		{
 			des[g_p++] = *sc++;
+			if (g_p + 1 > BUFF_SIZE)
+				ft_size_s();
+		}
 }
 
 void	*ft_memset_g_set_zero(void *b, int c, size_t len)
@@ -70,7 +78,7 @@ void	*ft_memset_g_set(void *b, int c, size_t len)
 		while (len)
 		{
 			*word++ = a;
-			len -= 8;
+			len = len - 8;
 			g_p += 8;
 		}
 	}

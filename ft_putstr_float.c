@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/25 17:42:52 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/16 20:43:27 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			ft_putstr_float(long double n, t_type *lst)
 	while (PMFW-- > 0)
 	{
 		n *= 10;
-		g_str[g_p++] = (uint64_t)n % 10 + 48;
+		ft_memset_g_set(g_str, (uint64_t)n % 10 + 48, 1);
 		n = (long double)n - (uint64_t)n;
 	}
 	ft_round_up_f(n, lst);

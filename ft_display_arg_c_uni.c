@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 15:45:55 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/09/30 18:22:00 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 16:30:09 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,22 @@ void		ft_display_no_arg_c_uni(t_type *lst)
 	if (FLAGS & 2)
 	{
 		if (MFW > 1)
-			ft_memset_g_set(g_str, ' ', MFW - SIZE);
+		{
+			MFW -= SIZE;
+			ft_display_mfw(lst);
+			ft_memset_g_set(g_str, ' ', MFW);
+		}
 	}
 	else
 	{
+		MFW -= SIZE;
+		ft_display_mfw(lst);
 		if (MFW > SIZE)
 		{
 			if (FLAGS & 4)
-				ft_memset_g_set(g_str, '0', MFW - SIZE);
+				ft_memset_g_set(g_str, '0', MFW);
 			else
-				ft_memset_g_set(g_str, ' ', MFW - SIZE);
+				ft_memset_g_set(g_str, ' ', MFW);
 		}
 	}
 }

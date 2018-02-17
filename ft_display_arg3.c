@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 07:59:51 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/11 13:32:37 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 10:36:03 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,33 @@ void		ft_display_arg_o_no_dash2(t_type *lst, unsigned int n)
 				--PMFW;
 			ft_memset_g_set(g_str, '0', 1);
 		}
+	PMFWG = PMFW;
+	PMFW -= SIZE;
 	ft_display_pmfw(lst);
-	ft_memset_g_set(g_str, '0', PMFW - SIZE);
+	ft_memset_g_set(g_str, '0', PMFW);
+}
+
+void		ft_display_arg_o_no_dash(t_type *lst, unsigned int n)
+{
+	if (MFW > PMFW)
+	{
+		MFW -= PMFW;
+		ft_display_mfw(lst);
+		ft_memset_g_set(g_str, ' ', MFW);
+	}
+	ft_display_arg_o_no_dash2(lst, n);
+}
+
+void		ft_display_arg_o_no_dash3(t_type *lst, unsigned int n)
+{
+	MFW -= SIZE;
+	ft_display_mfw(lst);
+	if (FLAGS & 4 && PMFW != -1)
+		ft_memset_g_set(g_str, '0', MFW);
+	else
+		ft_memset_g_set(g_str, ' ', MFW);
+	if (FLAGS & 1 && n && ((FLAGS & 2) == 0) && g_p--)
+		ft_memset_g_set(g_str, '0', 1);
 }
 
 void		ft_display_arg_o_dash(t_type *lst, unsigned int n)
@@ -38,40 +63,19 @@ void		ft_display_arg_o_dash(t_type *lst, unsigned int n)
 	{
 		ft_display_arg_o_no_dash2(lst, n);
 		ft_putstr_octal(n);
+		MFW -= PMFWG;
 		ft_display_mfw(lst);
-		ft_memset_g_set(g_str, ' ', MFW - PMFW);
+		ft_memset_g_set(g_str, ' ', MFW);
 	}
 	else if (MFW >= SIZE && (PMFW < SIZE || PMFW == 0))
 	{
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_octal(n);
-		ft_display_mfw(lst);
-		ft_memset_g_set(g_str, ' ', MFW - SIZE);
+		ft_display_arg_o_no_dash3(lst, n);
 	}
 	else if ((MFW < SIZE || MFW == 0) && (PMFW < SIZE || PMFW == 0))
 		if ((PMFW == -1 && n) || (PMFW != -1 && !(n)) || (PMFW != -1 && n))
 			ft_putstr_octal(n);
-}
-
-void		ft_display_arg_o_no_dash(t_type *lst, unsigned int n)
-{
-	if (MFW > PMFW)
-	{
-		ft_display_mfw(lst);
-		ft_memset_g_set(g_str, ' ', MFW - PMFW);
-	}
-	ft_display_arg_o_no_dash2(lst, n);
-}
-
-void		ft_display_arg_o_no_dash3(t_type *lst, unsigned int n)
-{
-	ft_display_mfw(lst);
-	if (FLAGS & 4 && PMFW != -1)
-		ft_memset_g_set(g_str, '0', MFW - SIZE);
-	else
-		ft_memset_g_set(g_str, ' ', MFW - SIZE);
-	if (FLAGS & 1 && n && g_p--)
-		ft_memset_g_set(g_str, '0', 1);
 }
 
 void		ft_display_arg_o(t_type *lst, va_list list)

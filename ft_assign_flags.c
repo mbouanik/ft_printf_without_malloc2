@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 02:32:42 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/12/22 13:48:16 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 09:23:05 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void		ft_flags(char **f, t_type *lst)
 					g_flag[i].f(lst);
 			*f += 1;
 		}
+	if (FLAGS & 2 && FLAGS & 4)
+		FLAGS &= 1011;
 }
 
 static void		ft_arg_type(t_type *lst, char **f)

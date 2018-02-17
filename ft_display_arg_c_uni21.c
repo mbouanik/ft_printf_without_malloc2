@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 08:46:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/01/24 17:36:01 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 13:13:33 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,22 @@ void		ft_display_arg_c_uni_21(wchar_t s, t_type *lst)
 	if (FLAGS & 2)
 	{
 		ft_display_arg_c_uni_21_arg(s);
-		ft_display_mfw(lst);
 		if (MFW > 4)
-			ft_memset_g_set(g_str, ' ', MFW - 4);
+		{
+			MFW -= 4;
+			ft_display_mfw(lst);
+			ft_memset_g_set(g_str, ' ', MFW);
+		}
 	}
 	else
 	{
-		if (MFW > 4)
+		if (MFW > 4 && (MFW -= 4))
 		{
 			ft_display_mfw(lst);
 			if (FLAGS & 4)
-				ft_memset_g_set(g_str, '0', MFW - 4);
+				ft_memset_g_set(g_str, '0', MFW);
 			else
-				ft_memset_g_set(g_str, ' ', MFW - 4);
+				ft_memset_g_set(g_str, ' ', MFW);
 			ft_display_arg_c_uni_21_arg(s);
 		}
 		else

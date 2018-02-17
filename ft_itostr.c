@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 13:21:06 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/14 08:29:29 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:46:22 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ static void		ft_assign_num(int n)
 	if (n > 0)
 		ft_assign_num(n / 10);
 	if (n > 0)
-		g_str[g_p++] = n % 10 + '0';
+	{
+		if (g_p + 1 > BUFF_SIZE)
+			ft_size_s();
+		ft_memset_g_set(g_str, n % 10 + '0', 1);
+	}
 }
 
 static void		ft_sign(int *n, int *s)

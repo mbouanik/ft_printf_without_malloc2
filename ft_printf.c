@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 22:49:40 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/11 20:18:00 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/02/17 16:19:13 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				ft_printf(char *format, ...)
 				if (lst.arg_type == g_arg[j].c)
 					g_arg[j].f(&lst, list);
 		}
+		g_ok = g_p;
 		ft_arg(&lst, g_arg[j].c, list);
 	}
 	ft_putstr_g(g_str);
