@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 18:05:30 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/11 19:36:14 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/06/11 21:05:47 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t		ft_strlen_num(long long int n)
 {
 	size_t size;
 
+	if (n < 0)
+		n *= -1;
 	size = 0;
 	if (n == 0)
 		size = 1;
@@ -59,7 +61,7 @@ size_t		ft_strlen_comma(float n)
 	return (i);
 }
 
-size_t		ft_strlen_comma_less_than_one(double n)
+size_t		ft_strlen_comma_less_than_one(long double n)
 {
 	size_t i;
 

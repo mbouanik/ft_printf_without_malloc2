@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 17:17:20 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/13 16:49:46 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/06/11 20:59:56 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void			ft_assign(long double n, t_type *lst)
 	if (n < 0)
 		n *= -1;
 	ft_itoustr((uint64_t)n);
+	n = (long double)n - (int)n;
 	while (PMFW-- > 0)
 	{
 		n *= 10;
 		if (g_p + 1 > BUFF_SIZE)
 			ft_size_s();
 		ft_memset_g_set(g_str, (uint64_t)n % 10 + 48, 1);
+		n = (long double)n - (int)n;
 	}
 	ft_round_up(n);
 }

@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:45:11 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/16 20:43:27 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/06/11 21:10:50 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			ft_round_up_g(void)
 	}
 }
 
-void			ft_round_up_f(double n, t_type *lst)
+void			ft_round_up_f(long double n, t_type *lst)
 {
 	int i;
 

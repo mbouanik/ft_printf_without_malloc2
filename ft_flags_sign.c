@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 14:50:04 by mbouanik          #+#    #+#             */
-/*   Updated: 2018/02/17 09:55:26 by mbouanik         ###   ########.fr       */
+/*   Updated: 2018/06/11 21:23:02 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			ft_flags_sign(t_type *lst, long n)
 		ft_memset_g(g_str, '-', 1);
 }
 
-void			ft_flags_sign_float(t_type *lst, double n)
+void			ft_flags_sign_float(t_type *lst, long double n)
 {
 	if (FLAGS & 16 && n >= 0 && --MFW)
 		ft_memset_g(g_str, '+', 1);
@@ -40,7 +40,10 @@ void			ft_less_than_one(t_type *lst, double n)
 	if (s <= 4 && (g_ok = 1))
 	{
 		SIZE = ft_strlen_num((uint64_t)n);
-		PMFW = ft_strlen_comma(n - (uint64_t)n);
+		if (PMFWG != -1)
+			PMFW -= 1;
+		else if (FLAGS & 64)
+			PMFW += s - 1;
 		SIZE += PMFW + 1;
 	}
 	else
