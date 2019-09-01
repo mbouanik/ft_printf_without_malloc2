@@ -6,7 +6,7 @@
 /*   By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:55:32 by mbouanik          #+#    #+#             */
-/*   Updated: 2017/04/21 17:45:31 by mbouanik         ###   ########.fr       */
+/*   Updated: 2019/08/31 15:16:10 by mbouanik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_arg g_arg_x[] = {
 	{216, &ft_display_arg_x_uintm},
 	{106, &ft_display_arg_x_uintm},
 	{122, &ft_display_arg_x_uintm},
+	{76, &ft_display_arg_x_uintm},
 	{0, NULL}
 };
 

@@ -6,7 +6,7 @@
 #    By: mbouanik <mbouanik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 22:55:01 by mbouanik          #+#    #+#              #
-#    Updated: 2018/06/11 19:04:56 by mbouanik         ###   ########.fr        #
+#    Updated: 2019/08/31 17:13:59 by mbouanik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ NAME = libftprintf.a
 SRC = 	ft_printf.c\
 		ft_display_str.c\
 		ft_assign_flags.c\
-		ft_display_arg.c\
-		ft_display_arg2.c\
-		ft_display_arg3.c\
-		ft_display_arg4.c\
-		ft_display_arg5.c\
-		ft_display_arg6.c\
-		ft_display_arg7.c\
-		ft_display_arg8.c\
+		ft_display_arg_d.c\
+		ft_display_arg_p.c\
+		ft_display_arg_b.c\
+		ft_display_arg_o.c\
+		ft_display_arg_octal.c\
+		ft_display_arg_x.c\
+		ft_display_arg_xx.c\
+		ft_display_arg_u.c\
 		ft_display_arg_uu.c\
 		ft_display_arg_dd.c\
 		ft_atoi_s.c\
