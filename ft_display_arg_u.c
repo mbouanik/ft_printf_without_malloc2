@@ -83,6 +83,8 @@ void		ft_display_arg_u(t_type *lst, va_list list)
 	}
 	n = va_arg(list, unsigned int);
 	SIZE = ft_strlen_num(n);
+	if (PMFW == -1)
+		SIZE = 0;
 	ft_size(lst, SIZE);
 	if (FLAGS & 2)
 		ft_display_arg_u_dash(lst, n);

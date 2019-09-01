@@ -88,7 +88,8 @@ SRC = 	ft_printf.c\
 		ft_putstr_float_e.c\
 		ft_display_arg_g.c\
 		ft_putstr_float_g.c\
-		ft_retrieve.c
+		ft_retrieve.c\
+		ft_memcpy.c
 
 OBJ = $(SRC:.c=.o)
 

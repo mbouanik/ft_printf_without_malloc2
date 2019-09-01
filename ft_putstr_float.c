@@ -47,23 +47,23 @@ void			ft_round_up_f(long double n, t_type *lst)
 
 	i = g_p;
 	g_p--;
-	if ((uint64_t)(n * 10) % 10 >= 5)
+	if (((uint64_t)(n * 10) % 10 ) >= 5)
 	{
 		if (g_str[g_p] <= '8' && g_str[g_p] >= '0')
 			g_str[g_p] += 1;
 		else if (g_str[g_p] == '9')
 		{
-			while ((g_str[g_p] == '9' || g_str[g_p] == '.') && SIZE)
+			while ((g_str[g_p] == '9' && SIZE))
 			{
 				if (g_str[g_p] == '.' && (--SIZE))
-					--g_p;
+					break;
 				g_str[g_p] = '0';
 				--g_p;
 				--SIZE;
 			}
 			if (g_str[g_p] == '.' && (--SIZE))
 				--g_p;
-			if (SIZE)
+			if (SIZE && g_str[g_p] < '9')
 				g_str[g_p] += 1;
 		}
 	}

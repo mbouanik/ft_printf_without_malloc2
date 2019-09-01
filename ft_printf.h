@@ -195,5 +195,6 @@ int					ft_choice(double n);
 size_t				ft_strlen_comma_less_than_one(long double n);
 void				ft_less_than_one(t_type *lst, double n);
 void				ft_display_pmfw(t_type *lst);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
