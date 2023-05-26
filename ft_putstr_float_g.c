@@ -39,9 +39,9 @@ void			ft_round_up(double n)
 
 void			ft_putstr_float_g(long double n, t_type *lst)
 {
-	int i;
+	// int i;
 
-	i = ft_strlen_num((uint64_t)n);
+	// i = ft_strlen_num((uint64_t)n);
 	if (g_ok == 1)
 		ft_putstr_float(n, lst);
 	else

@@ -77,13 +77,13 @@ size_t		ft_strlen_comma_less_than_one(long double n)
 int			ft_choice(double n)
 {
 	int e;
-	int a;
+	// int a;
 
 	e = 0;
 	if (n < 0.0)
 		n *= -1;
-	if (n < 1.0)
-		a = 1;
+	// if (n < 1.0)
+	// 	a = 1;
 	while (n < 0.9 && (++e))
 		n *= 10;
 	return (e);
